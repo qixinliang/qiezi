@@ -46,3 +46,19 @@ CREATE TABLE `novel` (
   `update_time` int(11) DEFAULT 0 COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for chapter
+-- ----------------------------
+DROP TABLE IF EXISTS `chapter`;
+CREATE TABLE `chapter` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `nid` int(11) NOT NULL COMMENT '小说编号',
+  `chapter` varchar(20) NOT NULL COMMENT '第几章',
+  `title` varchar(100) NOT NULL COMMENT '章节名称',
+  `content` text COMMENT '内容',
+  `state` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
+  `count` int(11) DEFAULT NULL COMMENT '字数',
+  `time` int(11) NOT NULL COMMENT '更新时间戳',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

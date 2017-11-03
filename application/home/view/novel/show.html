@@ -24,19 +24,19 @@
 		<!-- QQ强制竖屏 -->
 		<meta name="format-detection" content="telephone=no" />
 		<!-- 去除苹果浏览器自带link -->
-		<title>白姐</title>
-		<script src="/Public/page/js/prefixfree.min.js"></script>
-		<link href="/Public/page/css/beos.css" rel="stylesheet" />
-		<link href="/Public/page/css/swiper-3.4.2.min.css" rel="stylesheet" />
-		<link href="/Public/page/css/Style.css" rel="stylesheet" />
-		<link href="/Public/page/css/front.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="/Public/page/layer/need/layer.css"/>
+		<title>{$data['novel']->name}</title>
+		<script src="/page/js/prefixfree.min.js"></script>
+		<link href="/page/css/beos.css" rel="stylesheet" />
+		<link href="/page/css/swiper-3.4.2.min.css" rel="stylesheet" />
+		<link href="/page/css/Style.css" rel="stylesheet" />
+		<link href="/page/css/front.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/page/layer/need/layer.css"/>
 	</head>
 	<body>
 		<section class="section">
 			<h3>加载中...</h3>
 		</section>
-		<input type="hidden" id="domain" value="kd28.cn" />		
+		<input type="hidden" id="domain" value="tp5.com" />
 		<div class="MaxBody">	
 			
 			<!--隐藏菜单-->
@@ -44,41 +44,41 @@
 					<div class="Top">
 						<ul>						
 							<li>
-								<a onclick="backs()" title="返回上一页"><img src="/Public/page/img/icon-fh.png" alt="返回上一页" /></a>
+								<a onclick="backs()" title="返回上一页"><img src="/page/img/icon-fh.png" alt="返回上一页" /></a>
 							</li>
 							<li>第二章</li>
 							<li>
-								<a href="/Home/Novel/getClassList" title="我的书库"><img src="/Public/page/img/icon-sj.png" alt="我的书库" /></a>
+								<a href="/Home/Novel/getClassList" title="我的书库"><img src="/page/img/icon-sj.png" alt="我的书库" /></a>
 							</li>
 							<li>
-								<a href="/Home/User/recharge" title="充值"><img src="/Public/page/img/icon-rmb.png" alt="充值" /></a>
+								<a href="/Home/User/recharge" title="充值"><img src="/page/img/icon-rmb.png" alt="充值" /></a>
 							</li>
 						</ul>
 					</div>					 
-					<input type="hidden" id="novel_id" value="27" />
+					<input type="hidden" id="novel_id" value="{$data['novel']->id}" />
 					<div class="Bottom">
 						<ul>
 							<li>
 								<a class="muluButton">
-									<img src="/Public/page/img/icon-cd.png" alt="目录" />
+									<img src="/page/img/icon-cd.png" alt="目录" />
 									<p>目录</p>
 								</a>
 							</li>
 							<li>
 								<a class="Yejian">
-									<img src="/Public/page/img/icon-yl.png" alt="夜间模式" />
+									<img src="/page/img/icon-yl.png" alt="夜间模式" />
 									<p>夜间</p>
 								</a>
 							</li>
 							<li>
 								<a class="Shuqian">
-									<img src="/Public/page/img/icon-sq.png" alt="书签" />
+									<img src="/page/img/icon-sq.png" alt="书签" />
 									<p>书签</p>
 								</a>
 							</li>
 							<li>
 								<a href="/Home/Index/index">
-									<img src="/Public/page/img/home100.png" alt="返回首页" />
+									<img src="/page/img/home100.png" alt="返回首页" />
 									<p>首页</p>
 								</a>
 							</li>
@@ -90,7 +90,7 @@
 			<!--目录-->
 			<div class="Muli">
 				<div id="fdleft">
-					<div class="fdleftimg"><img src="/Public/page/img/icon-fh.png" width="100%"/></div>
+					<div class="fdleftimg"><img src="/page/img/icon-fh.png" width="100%"/></div>
 				</div>
 				<ul style="float: left;">
 					
@@ -107,12 +107,12 @@
        			<div class="swiper-button-prev swiper-button-white"></div>
 			</div>
 		</div>
-		<input type="hidden" id="novel_title" value="白姐" />
-		<input type="hidden" id="chapter_id" value="5508" />
-		<input type="hidden" id="novel_img" value="http://becold.cn/Public/attached/2017/05/13/149466365950134.jpg" />
+		<input type="hidden" id="novel_title" value="{$data['novel']->name}" />
+		<input type="hidden" id="chapter_id" value="{$data['id']}" />
+		<input type="hidden" id="novel_img" value="{$data['novel']->surface}" />
 		<div class="recharge">
 			<div class="box">
-				<div class="reico"><img src="/Public/page/img/gthico.png" width="100%"/></div>
+				<div class="reico"><img src="/page/img/gthico.png" width="100%"/></div>
 				<div class="text">
 					<p>您的可用余额已不足</p>
 					<p class="textsmall">请充值！</p>
@@ -129,7 +129,7 @@
 					<p>关注作者授权公众号继续阅读</p>
 					<p class="textsmall">由于版权问题，请关注后继续阅读</p>
 				</div>
-				<div class="reico"><img src="/Public/attached/other/zuiqi_novel.jpg" width="100%"/></div>
+				<div class="reico"><img src="/attached/other/zuiqi_novel.jpg" width="100%"/></div>
 				<div class="text">
 					<p>长按上图识别二维码关注</p>
 				</div>
@@ -137,10 +137,10 @@
 		</div>
 		<div class="jzhd"></div>
 		<div class="loginright ltop">
-			<div class="loginrights"><img src="/Public/page/img/loading-2.gif"/></div>
+			<div class="loginrights"><img src="/page/img/loading-2.gif"/></div>
 		</div>
 		<div class="loginright lbottom">
-			<div class="loginrights"><img src="/Public/page/img/loading-2.gif"/></div>
+			<div class="loginrights"><img src="/page/img/loading-2.gif"/></div>
 		</div>
 		<div class="signbox">
 			<div class="signboxcontent">
@@ -166,7 +166,7 @@
 		</div>
 	</body>
 </html>
-<script src="/Public/page/js/jquery.min.js"></script>
-<script src="/Public/page/js/swiper.min.js"></script>
-<script src="/Public/page/layer/layer.js"></script>
-<script src="/Public/page/js/angular.min.js"></script>
+<script src="/page/js/jquery.min.js"></script>
+<script src="/page/js/swiper.min.js"></script>
+<script src="/page/layer/layer.js"></script>
+<script src="/page/js/angular.min.js"></script>
