@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<!-- 删除苹果默认的工具栏和菜单栏 -->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<!-- 设置苹果工具栏颜色 -->
+		<meta name="format-detection" content="telphone=no, email=no" />
+		<!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+		<meta name="renderer" content="webkit" />
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 避免IE使用兼容模式 -->
+		<meta name="HandheldFriendly" content="true" />
+		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+		<meta name="MobileOptimized" content="480" />
+		<!-- 微软的老式浏览器 -->
+		<meta name="screen-orientation" content="portrait" />
+		<!-- uc强制竖屏 -->
+		<meta name="x5-orientation" content="portrait" />
+		<!-- QQ强制竖屏 -->
+		<meta name="format-detection" content="telephone=no" />
+		<!-- 去除苹果浏览器自带link -->
+		<title>白姐</title>
+		<script src="/Public/page/js/prefixfree.min.js"></script>
+		<link href="/Public/page/css/beos.css" rel="stylesheet" />
+		<link href="/Public/page/css/swiper-3.4.2.min.css" rel="stylesheet" />
+		<link href="/Public/page/css/Style.css" rel="stylesheet" />
+		<link href="/Public/page/css/front.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="/Public/page/layer/need/layer.css"/>
+	</head>
+	<body>
+		<section class="section">
+			<h3>加载中...</h3>
+		</section>
+		<input type="hidden" id="domain" value="kd28.cn" />		
+		<div class="MaxBody">	
+			
+			<!--隐藏菜单-->
+				<div class="Huanxing">
+					<div class="Top">
+						<ul>						
+							<li>
+								<a onclick="backs()" title="返回上一页"><img src="/Public/page/img/icon-fh.png" alt="返回上一页" /></a>
+							</li>
+							<li>第二章</li>
+							<li>
+								<a href="/Home/Novel/getClassList" title="我的书库"><img src="/Public/page/img/icon-sj.png" alt="我的书库" /></a>
+							</li>
+							<li>
+								<a href="/Home/User/recharge" title="充值"><img src="/Public/page/img/icon-rmb.png" alt="充值" /></a>
+							</li>
+						</ul>
+					</div>					 
+					<input type="hidden" id="novel_id" value="27" />
+					<div class="Bottom">
+						<ul>
+							<li>
+								<a class="muluButton">
+									<img src="/Public/page/img/icon-cd.png" alt="目录" />
+									<p>目录</p>
+								</a>
+							</li>
+							<li>
+								<a class="Yejian">
+									<img src="/Public/page/img/icon-yl.png" alt="夜间模式" />
+									<p>夜间</p>
+								</a>
+							</li>
+							<li>
+								<a class="Shuqian">
+									<img src="/Public/page/img/icon-sq.png" alt="书签" />
+									<p>书签</p>
+								</a>
+							</li>
+							<li>
+								<a href="/Home/Index/index">
+									<img src="/Public/page/img/home100.png" alt="返回首页" />
+									<p>首页</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--隐藏菜单-->
+
+			<!--目录-->
+			<div class="Muli">
+				<div id="fdleft">
+					<div class="fdleftimg"><img src="/Public/page/img/icon-fh.png" width="100%"/></div>
+				</div>
+				<ul style="float: left;">
+					
+				</ul>				
+			</div>
+			<!--目录-->
+
+			<!-- Swiper -->
+			<div class="swiper-container">
+				<div class="centerbox"></div>
+				<div class="swiper-wrapper "></div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next swiper-button-white"></div>
+       			<div class="swiper-button-prev swiper-button-white"></div>
+			</div>
+		</div>
+		<input type="hidden" id="novel_title" value="白姐" />
+		<input type="hidden" id="chapter_id" value="5508" />
+		<input type="hidden" id="novel_img" value="http://becold.cn/Public/attached/2017/05/13/149466365950134.jpg" />
+		<div class="recharge">
+			<div class="box">
+				<div class="reico"><img src="/Public/page/img/gthico.png" width="100%"/></div>
+				<div class="text">
+					<p>您的可用余额已不足</p>
+					<p class="textsmall">请充值！</p>
+				</div>
+				<div class="czico"><a href="/Home/User/recharge">充值</a></div>
+			</div>
+		</div>	
+		<input type="hidden" id="sign" value=""/>
+		<input type="hidden" id="tongjiurl" value="1266847429"/>
+		<iframe id="myFrame" src="/Home/Novel/tongji.html?tongji=1266847429" style="display: none;"></iframe>
+		<div class="gz">
+			<div class="box">
+				<div class="text">
+					<p>关注作者授权公众号继续阅读</p>
+					<p class="textsmall">由于版权问题，请关注后继续阅读</p>
+				</div>
+				<div class="reico"><img src="/Public/attached/other/zuiqi_novel.jpg" width="100%"/></div>
+				<div class="text">
+					<p>长按上图识别二维码关注</p>
+				</div>
+			</div>
+		</div>
+		<div class="jzhd"></div>
+		<div class="loginright ltop">
+			<div class="loginrights"><img src="/Public/page/img/loading-2.gif"/></div>
+		</div>
+		<div class="loginright lbottom">
+			<div class="loginrights"><img src="/Public/page/img/loading-2.gif"/></div>
+		</div>
+		<div class="signbox">
+			<div class="signboxcontent">
+				<h3>签到成功</h3>
+				<p>每日首次阅读，赠送<span>20</span>书币</p>
+				<p>请明日继续签到哦</p>
+				<div class="contentbtn">我知道啦</div>
+			</div>
+		</div>
+		<div class='workbigbox'>
+			<a href="">
+				<div class='workgybox'>
+					<div class='worktitle'>
+						<div class='userimg'>
+							<img src=''/>
+						</div>
+						<div class='username'></div>
+						<div class='workright'></div>
+					</div>
+					<div class='workcontent'></div>
+				</div>
+			</a>
+		</div>
+	</body>
+</html>
+<script src="/Public/page/js/jquery.min.js"></script>
+<script src="/Public/page/js/swiper.min.js"></script>
+<script src="/Public/page/layer/layer.js"></script>
+<script src="/Public/page/js/angular.min.js"></script>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" content="[description]">
+    <meta name="keywords" content="[keywords]">
+    <meta charset="UTF-8">
+    <title>充值</title>
+    <style type="text/css">
+        #first-recharge{
+            margin-bottom: 45px;
+        }
+        .czimgbox{
+            width: 100%;
+            height: 150px;
+            perspective: 400px;
+        }
+        .czimgbox img{
+            width: 100%;
+            height: 100%;
+            animation: czimganimet .8s ease-in-out infinite;
+        }
+        @keyframes czimganimet{
+            0%,100%{transform: translateZ(-20px);}
+            50%{transform: translateZ(20px);}
+        }
+        .footer{width: 100%;position: fixed;left: 0;right: 0;bottom: 0;background: #fff;border-top: 1px solid #ddd;display: table;z-index: 9;}
+        .footer ul{display: table-row;}
+        .footer li{display: table-cell;text-align: center;}
+        .footer li a{height: 49px;line-height: 49px;display: block;font-size: 1.2rem;color: #a0a0a0;font-family: "Microsoft Yahei", sans-serif}
+        .footer li a.active{color: #ff730b;}
+        .footer li a i{width: 17px;height: 17px;display: inline-block;background: url(/Public/home/images/column.png) no-repeat;background-size: 115px 17px;position: relative;top: 4px;margin-right: 6px;}
+        .footer li a i.icon-book{background-position: 0 0;}
+        .footer li a.active i.icon-book{background-position: -20px 0;}
+        .footer li a i.icon-choice{background-position: -42px 0;}
+        .footer li a.active i.icon-choice{background-position: -61px 0;}
+        .footer li a i.icon-my{background-position: -80px 0;}
+        .footer li a.active i.icon-my{background-position: -98px 0;}
+    </style>
+</head>
+<link rel="stylesheet" href="https://askstatic.txtbook.com.cn/ledu_wap/v2/css/style.css">
+
+<script type="text/javascript" src="https://askstatic.txtbook.com.cn/ledu_wap/v2/js/flexible.js"></script>
+<script type="text/javascript" src="https://askstatic.txtbook.com.cn/ledu_wap/v2/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="https://askstatic.txtbook.com.cn/ledu_wap/v2/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://askstatic.txtbook.com.cn/ledu_wap/v2/js/jquery.pin.js"></script>
+<script type="text/javascript" src="https://askstatic.txtbook.com.cn/ledu_wap/v2/js/main.js"></script>
+<script src="https://askstatic.txtbook.com.cn/ledu_wap/v2/Vendor/layer_mobile/layer.js"></script>
+
+<body>
+<!--<div class="app_goBackToTop"></div>-->
+<div class="container">
+    <div class="app_header_section2  app_scrollerHeader  pinned">
+        <div class="app_header_detail2">
+            <div class="app_header_back"></div>
+            <div class="app_header_h1">书币充值</div>
+        </div>
+    </div>
+    <div class="app_body">
+
+        <div class="app_openReadBlock">
+            <div class="app_openReadBlock_li  app_deleteMargin" style="padding-bottom: 2.5rem;">
+                <div class="app_openReadBlock_select" id="products-grid" class="products-grid clearfix">
+                    <ul  >
+
+                        <li class="active">
+                            <div class="app_borderBlock product-item" data-pid="4" data-welth="3000">
+										<span class="top">
+                                            <span class="number">
+                                            <i>3000书币</i>
+                                            </span>
+										</span>
+                                <span class="bottom">30元</span>
+                            </div>
+                        </li>
+						<li class="active" style="display:none;">
+                            <div class="app_borderBlock product-item" data-pid="11" data-welth="3000">
+										<span class="top">
+                                            <span class="number">
+                                            <i>1书币</i>
+                                            </span>
+										</span>
+                                <span class="bottom">0.01元</span>
+                            </div>
+                        </li>						
+                        <li>
+                            <div class="app_borderBlock product-item" data-pid="3" data-welth="5000">
+										<span class="top">
+                                            <span class="number">
+                                            <i>5000书币</i>
+                                            <i>+送3000书币</i>
+                                            </span>
+										</span>
+                                <span class="bottom">50元</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="app_borderBlock product-item" data-pid="2" data-welth="10000">
+										<span class="top">
+                                            <span class="number">
+                                            <i>10000书币</i>
+                                            <i>+送8000书币</i>
+                                            </span>
+										</span>
+                                <span class="bottom">100元</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="app_borderBlock product-item" data-pid="1" data-welth="20000">
+										<span class="top">
+                                            <span class="number">
+                                            <i>20000书币</i>
+                                            <i>+送20000书币</i>
+                                            </span>
+										</span>
+                                <span class="bottom">200元</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="app_borderBlock product-item" data-pid="6" data-welth="0">
+                                <span class="top">
+                                    <span class="number">
+                                            <i>年费VIP会员</i>
+                                            <i>每天1元, 全年免费看</i>
+                                    </span>
+                                </span>
+                                <span class="bottom">365元</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="app_openReadBlock_button" id="btn-pay-confirm">提交订单</div>
+                <input type="hidden" id="open_id" value="or28-0nbgTXemdKAxNHBfc6J2CWY"/>
+
+            </div>
+            <div id="first-recharge" class="app_body_banner czimgbox">
+                <img src="/Public/attached/other/czimg.jpg"/>
+            </div>
+
+        </div>
+        <script type="text/javascript" src="https://m.txtbook.com.cn/tool/channelcode"></script>
+        <script type="text/javascript">
+            var BaiDuTongJi = "1641ec9a769b49ee9d3d3ad63a74c0ba";
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?" + BaiDuTongJi;
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.app_openReadBlock_select li').click(function () {
+            $(this).parent().find('li').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        var articleId = null;
+        var returnUrl = '';
+        var tradeType = '';
+        var submitting = false;
+        var open_id = $("#open_id").val();
+
+        $('#products-grid .product-item').click(function () {
+            $('#products-grid .product-item').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        $('#btn-pay-confirm').click(function () {
+            if (submitting) {
+                return false;
+            }
+
+            submitting = true;
+
+            var productId = $('#products-grid .product-item.active').attr('data-pid');
+			if(typeof(productId) == "undefined")
+				productId = 4;
+            var url = "http://zsjtt.cn/Home/ZNPay/pay";
+            var back_domain = "kd28.cn";
+            var url = url + '?id=' + productId + "&open_id=" + open_id+ "&back_domain=" + back_domain;
+            //alert(url);
+
+            if (articleId) {
+                url += '&aid=' + articleId;
+            }
+            if (tradeType) {
+                url += '&trade_type=' + tradeType;
+            }
+            if (returnUrl) {
+                url += '&return=' + encodeURIComponent(returnUrl);
+            }
+
+            location.href = url;
+        })
+
+        $('#first-recharge').click(function(){
+            if (submitting) {
+                return false;
+            }
+
+            submitting = true;
+            var url = "http://zsjtt.cn/Home/ZNPay/pay";
+            var back_domain = "kd28.cn";
+            var url = url + '?id=12' +  "&open_id=" + open_id+ "&back_domain=" + back_domain;
+            // alert(url);
+            if (articleId) {
+                url += '&aid=' + articleId;
+            }
+            if (tradeType) {
+                url += '&trade_type=' + tradeType;
+            }
+            if (returnUrl) {
+                url += '&return=' + encodeURIComponent(returnUrl);
+            }
+
+            location.href = url;
+        })
+
+
+    })
+
+</script>
+<div class="footer" id="footer_nav">
+    <ul>
+        <li>
+            <a href="/Home/Shelf/index"><i class="icon-book"></i>书架</a>
+        </li>
+        <li>
+            <a href="/Home/Index/index" ><i class="icon-choice"></i>首页</a>
+        </li>
+        <li>
+            <a href="/Home/User/userinfo" ><i class="icon-my"></i>我的</a>
+        </li>
+    </ul>
+</div>
+</body>
+
+</html>
