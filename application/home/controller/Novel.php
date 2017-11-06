@@ -62,7 +62,7 @@ class Novel{
 			return -1;
 		}
 		$novelId = (int)$p['novel_id'];
-		$id = isset($p['id'])? (int)$p['id'] : 1;
+		$id = isset($p['id'])? (int)$p['id'] : 5508;
 		$row = NovelModel::get($novelId);
 		if(!isset($row) || empty($row)){
 			return -1;
@@ -92,7 +92,7 @@ class Novel{
 		}
 		$nid = (int)$p['novel_id'];
 
-		$rows = ChapterModel::all(['nid' => $nid]);
+		$rows = ChapterModel::all(['novel_id' => $nid]);
 		return json_encode($rows);
 	}
 
@@ -107,8 +107,8 @@ class Novel{
 		$cid = (int)$p['chapter_id'];
 		
 		$row = ChapterModel::get([
-			'id'  => $cid,
-			'nid' => $nid
+			'chapter_id'  => $cid,
+			'novel_id' => $nid
 		]);
 		return json_encode($row);
 	}

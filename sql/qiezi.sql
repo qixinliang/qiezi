@@ -52,8 +52,8 @@ CREATE TABLE `novel` (
 -- ----------------------------
 DROP TABLE IF EXISTS `chapter`;
 CREATE TABLE `chapter` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '编号',
-  `nid` int(11) NOT NULL COMMENT '小说编号',
+  `chapter_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `novel_id` int(11) NOT NULL COMMENT '小说编号',
   `chapter` varchar(20) NOT NULL COMMENT '第几章',
   `title` varchar(100) NOT NULL COMMENT '章节名称',
   `content` text COMMENT '内容',
