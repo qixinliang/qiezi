@@ -8,8 +8,17 @@ use app\home\model\Novel as NovelModel;
 use app\home\model\Author as AuthorModel;
 
 class Index{
+
+	//获取轮播数据
+	protected function getCarousel(){
+		$nObj = new NovelModel();
+		$rows = $nObj->where('is_carousel',1)->limit(6)->order('id','desc')->select();
+		return $rows;
+	}
 	public function index(){
-		return view('index');
+		//-获取轮播数据
+		$carousels = $this->getCarousel();
+		return view('index',['carousels' => $carousels,]);
 	}
 
 	public function search(){
