@@ -143,6 +143,8 @@ function delAspExtension(str){
     var reg = /\.html$/;
     return str.replace(reg,'');
 }
+
+/*
 // 首页 猜你想
 function get_other_books(bid){
     var url = "/Home/Index/love";
@@ -155,6 +157,21 @@ function get_other_books(bid){
         }
     })
 }
+*/
+
+//首页 猜你喜欢 每次6条数据
+function get_other_books(){
+	var url = "/home/Index/love";
+	var data = {limit : 6}; 
+	AjaxJson(url,data,function(res){
+		if(res.error_code == 0){
+            $("#other_book").html(res.data);
+		}else{
+			bh_msg_tips(res.error_msg);
+		}
+	});
+}
+
 // 倒计时
 function GetRTime(dateid){
     var startdate = document.getElementById(dateid).getAttribute("startdate");
