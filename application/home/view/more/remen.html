@@ -13,8 +13,8 @@
 		<title>免费小说_免费小说下载_好看的小说网-最全小说</title>
 		<meta name="Keywords" content="免费小说,免费全本小说,免费小说在线阅读,免费小说下载" />
 		<meta name="Description" content="最全小说免费小说在线阅读，这里有好看的玄幻小说,武侠小说,穿越小说,都市小说,历史军事小说,校园言情小说,总裁豪门小说,科幻小说,恐怖小说等，在线阅读全文无广告弹窗，手机在线看小说就选最全小说。" />
-		<link rel="stylesheet" type="text/css" href="/Public/home/css/base_3.css" />
-		<link rel="stylesheet" type="text/css" href="/Public/home/css/recharge_4.css" />
+		<link rel="stylesheet" type="text/css" href="/home/css/base_3.css" />
+		<link rel="stylesheet" type="text/css" href="/home/css/recharge_4.css" />
 		<script>
 			var t_text = "免费小说_免费小说下载_好看的小说网-最全小说";
 			var url_channel = "";
@@ -28,9 +28,9 @@
 				} catch(e) {}
 			}
 		</script>
-		<script type="text/javascript" src="/Public/home/js/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="/Public/home/js/public.js"></script>
-		<script type="text/javascript" src="/Public/home/js/pay.js"></script>
+		<script type="text/javascript" src="/home/js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="/home/js/public.js"></script>
+		<script type="text/javascript" src="/home/js/pay.js"></script>
 		<style>
 			body {
 				-webkit-touch-callout: none;
@@ -46,150 +46,31 @@
 	<body>
 		<div class="header top-half">
 			<div class="inner"><span class="pull-left"><a href="/Home/Index/index"><i class="icon-home"></i>首页</a></span>
-				<h2>新书推荐</h2></div>
+				<h2>热门小说</h2></div>
 		</div>
 		<!--列表 begin-->
 		<div class="search-result hot-box bor-top mar-top">
 			<div class="entry" id="html_box">
+		<?php foreach($hot as  $v) : ?>
+			<?php
+				$href = "/home/Novel/novelinfo/id/".$v['id'];
+				$surface = $v['surface'];
+				$title = $v['title'];
+				$author = $v['author'];
+				$intro = $v['intro'];
+			?>
 				<div class="item">
-					<a href="/Home/Novel/novelinfo/id/1484"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f82a803d79e.jpg" class="avatar">
-						<div class="body"><span class="t">麒麟之遇</span><span class="author">逆晨</span><span class="btn">立即阅读</span>
-							<p>世界之乱，非我之愿。若要改变，以我为先。
-
-既然不能一蹴而就，那就从蝼蚁开始，
-
-总有一天，世界将会因我而颤。</p>
+					<a href="<?=$href?>"><img src="<?=$surface?>" class="avatar">
+						<div class="body">
+							<span class="t">﻿<?=$title?></span>
+							<span class="author"><?=$author?></span>
+							<span class="btn">立即阅读</span>
+							<p><?=$intro?></p>
 						</div>
 					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1477"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f8475f1a969.jpg" class="avatar">
-						<div class="body"><span class="t">超能落神</span><span class="author">皇族大少爷</span><span class="btn">立即阅读</span>
-							<p>天灾人祸，让主人公失去所有亲人，不过却得到了一种常人所没有的能力。
-
-天地正气，悬疑猜测，正邪对战。
-
-是谁对？是谁错？
-
-幽幽天下，何处是我家？</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1475"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f838638f857.jpg" class="avatar">
-						<div class="body"><span class="t">丑妃倾城</span><span class="author">北溪浅笑</span><span class="btn">立即阅读</span>
-							<p>丞相府二小姐，众人眼中的废物、丑女。长得丑，她被人唾弃、厌恶，被太子悔婚。皇上用她羞辱凌王，被冤枉是刺客内应遭人鞭打致死。
-
-同名同姓不同灵魂，现在的苏婠央是国家特种训练的药剂师。天下没有她解不开的毒，治不好的病！
-
-王爷你嫌我丑？没关系，那我蒙着脸。
-
-然，皇上寿宴，那想要羞辱她的人在扯下那从不离身的面纱之后，看到的是天仙亦不可媲美的美人儿。
-
-太子后悔了？恩恩，让他后悔去吧。
-
-王爷心动了？嘿嘿，殿下，您不是说您不是以貌取人的人么？</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1401"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f847e49bda5.jpg" class="avatar">
-						<div class="body"><span class="t">大魔出征</span><span class="author">罪都新少</span><span class="btn">立即阅读</span>
-							<p>淼淼古葬路，情为此岸树。
-
-田悼，一个高中生，意外的血脉，神秘的传承，急迫的威胁，是天道的变革，还是人为的安排，一切，都将一一解开……
-
-大魔已养成， 一魔破万宗。 既然初衷已陨，那么大魔出征。</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1363"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f849c23bb08.jpg" class="avatar">
-						<div class="body"><span class="t">魔王的契约</span><span class="author">浪沙</span><span class="btn">立即阅读</span>
-							<p>她是一个被地狱放逐的恶魔就因为她身上带着毁灭地狱的诅咒。父亲想要杀死她没有谁想要她存在地狱里，留下来只有死吧。或许命运之神没有忘记她想让她活下去，在一次动乱中，魔法师带走了她但却将她独自遗留在一个陌生的世界。没有黑暗没有鲜血的味道与热度。就在她几乎绝望的等待死神的降临时候那个男人-——那个注定成为圣神的男人无意中救了她。命运邂逅他们的生命从此紧紧相连，然而注定他们会卷入一场纷争等待他们的是毁灭还是幸福。。。。。。。</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1354"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f849f896339.jpg" class="avatar">
-						<div class="body"><span class="t">凤倾九国</span><span class="author">不朽男男</span><span class="btn">立即阅读</span>
-							<p>【妃常倾城之谁家娘子不出墙】NN出新坑了，欢迎吐槽~~
-
-我是宓妃，而你却不是我的河伯。
-
-她堂堂前途无可限量的公务员，意外的穿越到了一个不修边幅的九国时代：俟国、百国、濮国、东国、子国、轩国、西国、左国、南国。
-
-而这个故事，发生在九国之俟国。
-
-“你若要这江山，我帮你得到有何不可。”
-
-他一心只系天下，却因她的闯入而乱了心神，从此，他不再是人人畏惧的冷面王爷，而是只属于她的‘河伯’。
-
-“我以江山为聘，许你在我身边，永远。”
-
-他爱江山，他爱她，若是两者只能则一，他会为她拱手江山，只为红颜一笑。
-
-“我万俟末晗所生子女，必为宓妃所出，即便永无子嗣，终此一生，亦不另娶，以血盟誓，天地同鉴。”
-
-三妻四妾？他只要一个足矣。</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1321"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f84a321821e.jpg" class="avatar">
-						<div class="body"><span class="t">鬼界王者</span><span class="author">不灭</span><span class="btn">立即阅读</span>
-							<p>传说上古修真时期，天地间共分为人，魔，鬼三界！其中三界中以人界的实力最为强大，其次是那魔界，最次是那鬼界！但是人魔两界万万没有想到的是鬼界竟然出现了这么一个至尊王者，本书精彩演绎了那位鬼界的至尊王者从弱冠少年道至尊强者的传奇一生！
-
-不灭：欢迎各大书友的光临！请大家认真的阅读鬼王，本书一定会给你一个难忘的回忆，同时也请看书的书友花几分钟在华夏注册个账号，收藏，推荐一下！同时也请大家给不灭最真实的书评，谢谢！
-
-本书已经上架，请喜欢不灭的书友，拿起你手中的票票砸向不灭吧！同时求订阅，月票，红包，推荐，收藏，点击！不灭会记住大家曾经的支持，力求写出更加完美的小说来回报大家！</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1317"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f84a7ccdc71.jpg" class="avatar">
-						<div class="body"><span class="t">腹黑公子很暖心</span><span class="author">阡墨红尘</span><span class="btn">立即阅读</span>
-							<p>本着穿越女主都会跳崖不死，落水被救的原则，姑奶奶拼了——
-
-“啊！！！好痛！！！”
-
-骨折外加脑震荡！有木有！！！
-
-可是，这些都不是重点-----
-
-豆豆，你不记得我是谁，不要紧！我会等着你再重新爱我一遍……</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1314"><img src="http://becold.cn/Public/attached/2017/10/31/novel2017103159f8481715ac7.jpg" class="avatar">
-						<div class="body"><span class="t">昏久必婚</span><span class="author">黄昏雨泪</span><span class="btn">立即阅读</span>
-							<p>他是在舞台上闪闪发光的大明星
-
-她是曾经支持他进入演艺圈的同居女友
-
-他光鲜背后的泪水
-
-她忍住眼泪的离去
-
-当她，重新踏上这番旅程，决定不再放手时
-
-他却悄无声息的离开
-
-转瞬即逝的爱情，还没有来得及珍惜
-
-跨出那道轻薄的门槛，背道离驰
-
-回旋的诺言，终不会被吹散遣尽
-
-留下现今的，美好记忆。</p>
-						</div>
-					</a>
-				</div><div class="item">
-					<a href="/Home/Novel/novelinfo/id/1247"><img src="http://becold.cn/Public/attached/2017/11/01/novel2017110159f92e2730454.jpg" class="avatar">
-						<div class="body"><span class="t">梦幽魂：女皇，男妃求宠爱</span><span class="author">陈橘子小姐</span><span class="btn">立即阅读</span>
-							<p>前世牵绊已然不再穿越到异世界得知自己的芳华终究止于二十，忘掉前世决心坚持的爱恋谁知伤心至极！伤完一次又一次挂掉一次又一次！
-
-新代女皇复苏醒来，搜罗美男尽享繁华。坐拥城池独享欢爱。
-
-幻化成蝶回溯上仙，生死相依，只为前缘。爱你恨你怨你兜转重生，轮回也只为你们开启！
-
-亲亲们橘子在这里要郑重说明一下，橘子的文文是标准的一女n男的组合，喜欢看的亲可千万不要被vip挡在外面哈！因为好戏就在里头，千万别错过！绝对不会让你后悔的！！！！！！！！！！橘子得瑟的小腿猫步来了，女主带着相公们玩转现代喽~！！！！！！！！！！新的机遇新的开始新的情感新的故事情节发展~！</p>
-						</div>
-					</a>
-				</div>			</div>
+				</div>
+			<?php endforeach; ?>
+			</div>
 		</div>
 		<!--列表 end-->
 		<div class="return-top" id="icon-top" style="display: none;">
@@ -339,16 +220,16 @@
 			})
 		</script>
 		<script>
-			var p = 1;
-			var type = "xs";
+			var p = 2;
+			var type = "free";
 			$(function() {
 				// 滚动到底部获取新的分页
-				var url = "/More/ajax_book_list.html";
-				var data = {
-					type: type,
-					p: p
-				}
-				list_page(url, data);
+				<!-- var url = "/Book/ajax_book_list"; -->
+				<!-- var data = { -->
+					<!-- type: type, -->
+					<!-- p: p -->
+				<!-- } -->
+				<!-- list_page(url, data); -->
 			});
 		</script>
 		<script>

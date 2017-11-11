@@ -285,133 +285,189 @@
 <!--主编推荐 begin-->
 <div class="recommend bor-top">
     <div class="title">
-        <h3>主编推荐</h3><span class="dot"><!--<a href="#" class="active"></a>--></span></div>
+        <h3>主编推荐</h3><span class="dot"><!--<a href="#" class="active"></a>--></span>
+	</div>
+
     <div class="entry" id="edit_box">
         <ul style="display: block; " id="recommend_box">
-            <!--第一组循环-->
-                                    <li>
-                <a href="/Home/Novel/novelinfo/id/162"><img src="http://becold.cn/Public/attached/2017/05/25/149571272918920.jpg">
-                    <p>超级兵王在花都</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/408" style="margin: 0 auto;"><img src="http://becold.cn/Public/attached/2017/06/03/149646223342425.jpg">
-                    <p>斩龙</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/7" style="float: right;"><img src="http://becold.cn/Public/attached/2017/05/13/149466364730322.jpg">
-                    <p>透视系统</p>
-                </a>
-            </li>
-                                    <!--第二组循环-->
-                                    <li style='display:none;'>
-                <a href="/Home/Novel/novelinfo/id/9"><img src="http://becold.cn/Public/attached/2017/05/13/149466364826409.jpg">
-                    <p>风流岁月之活色生香</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/8" style="margin: 0 auto;"><img src="http://becold.cn/Public/attached/2017/05/13/149466364717800.jpg">
-                    <p>我和女神在荒岛的日子</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/6" style="float: right;"><img src="http://becold.cn/Public/attached/2017/05/13/149466364680136.jpg">
-                    <p>花容月貌</p>
-                </a>
-            </li>
-                                                <li style='display:none;'>
-                <a href="/Home/Novel/novelinfo/id/5"><img src="http://becold.cn/Public/attached/2017/05/13/149466364612115.jpg">
-                    <p>透视神眼</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/1190" style="margin: 0 auto;"><img src="http://becold.cn/Public/attached/2017/10/30/novel2017103059f6c660b80ac.jpg">
-                    <p>王在相爱</p>
-                </a>
-            </li>
-                                                <li>
-                <a href="/Home/Novel/novelinfo/id/3" style="float: right;"><img src="http://becold.cn/Public/attached/2017/05/13/149466364581555.jpg">
-                    <p>官梯</p>
-                </a>
-            </li>
-                        
 
+            <!--第一组循环-->
+			<?php foreach($first as $k => $v) : ?>
+			<?php
+				$href = "/home/Novel/novelinfo/id/".$v->id;
+				$surface = $v->surface;
+				$title = $v->name;
+			?>
+
+			<?php if($k == 0): ?>
+				<li>
+					<a href="<?=$href?>">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php elseif($k == 1): ?>
+				<li>
+					<a href="<?=$href?>" style="margin: 0 auto;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php else : ?>
+				<li>
+					<a href="<?=$href?>" style="float: right;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php endif; ?>
+			<?php endforeach; ?>
+
+            <!--第二组循环-->
+			<?php foreach($second as $k => $v) : ?>
+			<?php
+				$href = "/home/Novel/novelinfo/id/".$v->id;
+				$surface = $v->surface;
+				$title = $v->name;
+			?>
+			<?php if($k == 0): ?>
+				<li style='display:none;'>
+					<a href="<?=$href?>">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php elseif($k == 1): ?>
+				<li>
+					<a href="<?=$href?>" style="margin: 0 auto;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php else : ?>
+				<li>
+					<a href="<?=$href?>" style="float: right;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php endif; ?>
+			<?php endforeach; ?>
+
+            <!--第三组循环-->
+			<?php foreach($third as $k => $v) : ?>
+			<?php
+				$href = "/home/Novel/novelinfo/id/".$v->id;
+				$surface = $v->surface;
+				$title = $v->name;
+			?>
+			<?php if($k == 0): ?>
+				<li style='display:none;'>
+					<a href="<?=$href?>">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php elseif($k == 1): ?>
+				<li>
+					<a href="<?=$href?>" style="margin: 0 auto;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php else : ?>
+				<li>
+					<a href="<?=$href?>" style="float: right;">
+						<img src="<?=$surface?>"><p><?=$title?></p>
+					</a>
+				</li>
+			<?php endif; ?>
+			<?php endforeach; ?>
         </ul>
     </div>
 </div>
 <!--主编推荐 end-->
+
 <!-- 热门小说 begin -->
 <div class="recommend hot-box bor-top">
     <div class="title">
         <h3>热门小说</h3>
-        <a href="/More/remen.html">更多<i class="icon-arrow"></i></a>
+        <a href="/home/More/remen.html">更多<i class="icon-arrow"></i></a>
     </div>
     <div class="entry">
-        <div class="item">
-                <a href="/Home/Novel/novelinfo/id/27" ><img src=" http://becold.cn/Public/attached/2017/09/16/novel2017091659bca10f40f91.jpg" class="avatar">
-                    <div class="body" style="height: 112px;"><span class="t">白姐</span><span class="author">阿刀</span><span class="btn">立即阅读</span>
-                        <p>感谢青春，让我在一无所有的年纪，遇到了青春靓丽的你。                        </p>
+		<?php foreach($hot as  $v) : ?>
+			<?php
+				$href = "/home/Novel/novelinfo/id/".$v['id'];
+				$surface = $v['surface'];
+				$title = $v['title'];
+				$author = $v['author'];
+				$intro = $v['intro'];
+			?>
+			<div class="item">
+                <a href="<?=$href?>" ><img src="<?=$surface?>" class="avatar">
+                    <div class="body" style="height: 112px;">
+						<span class="t"><?=$title?></span>
+						<span class="author"><?=$author?></span>
+						<span class="btn">立即阅读</span>
+                        <p><?=$intro?></p>
                     </div>
                 </a>
-            </div><div class="item">
-                <a href="/Home/Novel/novelinfo/id/50" ><img src=" http://becold.cn/Public/attached/2017/05/13/149466367091232.jpg" class="avatar">
-                    <div class="body" style="height: 112px;"><span class="t">绝宠千金归来</span><span class="author">夏日晨曦</span><span class="btn">立即阅读</span>
-                        <p>初恋，让她伤的体无完肤，遁入地狱之门时，她誓言：今生今世绝情绝欲。 阴差阳错，让她与他相遇，从此，她成了他致命的弱点，而他成了她的毒药——恋上就无可自拔！！！！！                        </p>
-                    </div>
-                </a>
-            </div><div class="item">
-                <a href="/Home/Novel/novelinfo/id/57" ><img src=" http://becold.cn/Public/attached/2017/05/17/149498794755273.jpg" class="avatar">
-                    <div class="body" style="height: 112px;"><span class="t">山野刁民</span><span class="author">冷面邪少</span><span class="btn">立即阅读</span>
-                        <p>陈二娃是十里八乡唯一的赤脚大夫，还会耍点功夫，自然混得风生水起。但他的身世却一直是一谜，并且困扰着他。看一个陈二娃，这个孤儿少年，如何在找寻自己身世中，实现其大地王者的伟大梦想。                        </p>
-                    </div>
-                </a>
-            </div>
+			</div>
+		<?php endforeach; ?>
     </div>
 </div>
 <!-- 热门小说 end -->
+
 <!--新书推荐 begin-->
 <div class="recommend hot-box new-book bor-top">
     <div class="title">
         <h3>新书推荐</h3>
-        <a href="/More/xinshu.html">更多<i class="icon-arrow"></i></a>
+        <a href="/home/More/xinshu.html">更多<i class="icon-arrow"></i></a>
     </div>
     <div class="entry">
         <div class="book">
             <ul>
-                <li>
-                        <a href="/Home/Novel/novelinfo/id/1190" ><img src=" http://becold.cn/Public/attached/2017/10/30/novel2017103059f6c660b80ac.jpg">
-                            <p>王在相爱</p>
-                        </a>
-                    </li><li>
-                        <a href="/Home/Novel/novelinfo/id/945" ><img src=" http://becold.cn/Public/attached/2017/10/27/novel2017102759f2a497638a6.jpg">
-                            <p>罪恶青春</p>
-                        </a>
-                    </li><li>
-                        <a href="/Home/Novel/novelinfo/id/943" ><img src=" http://becold.cn/Public/attached/2017/10/27/novel2017102759f28e934ce18.jpg">
-                            <p>流氓战神</p>
-                        </a>
-                    </li>            </ul>
+				<?php foreach($new as $k => $v) : ?>
+					<?php 
+						$href = "/home/Novel/novelinfo/id/".$v['id'];
+						$surface = $v['surface'];
+						$title = $v['title'];
+						$author = $v['author'];
+						$intro = $v['intro'];
+					?>
+					<?php if( $k < 3) :?>
+						<li>
+							<a href="<?=$href?>" ><img src="<?=$surface?>">
+								<p><?=$title?></p>
+							</a>
+						</li>
+					<?php else :?>
+					<?php endif; ?>
+				<?php endforeach;?>
+			</ul>
         </div>
-        <div class="item">
-                <a href="/Home/Novel/novelinfo/id/944"><img src=" http://becold.cn/Public/attached/2017/10/27/novel2017102759f2a3780ad0e.jpg" class="avatar">
-                    <div class="body" style="height: 112px;"><span class="t">玲珑偷心</span><span class="author">狂饮莫醉</span><span class="btn">立即阅读</span>
-                        <p>"世间本没有路，走的人多了，便有了路。世间也没有神，当你拥有了诸般能力，你便成了人们心中的神。自古以来，人类为了追求长生，著出各种丹法秘籍，企图达到长生不死的目的。更有一些智者创造了一些秘法，将人和动物相结合，创造出各种异形，也拥有了诸般异能，这些异形最后被人类尊为神明，比如人蛇合体的上古之神--女娲。水玲珑，一个远古神族的分解之体，二十一世纪的一个普通异能者，且看她如何历尽磨难，层层蜕变成就远古真神时代的异形的完美异形。期间，有阴谋诡计，尔虞我诈。有悲欢离合，生死相许。有真挚的友情，有凄美的爱情！一次次的死亡，一次次的重生，最后她能否和挚爱携手归隐，尽在玲珑偷心……"</p>
+		<?php foreach($new as $k => $v) : ?>
+			<?php 
+				$href = "/home/Novel/novelinfo/id/".$v['id'];
+				$surface = $v['surface'];
+				$title = $v['title'];
+				$author = $v['author'];
+				$intro = $v['intro'];
+			?>
+			<?php if( $k < 3) :?>
+			<?php else :?>
+				<div class="item">
+                <a href="<?=$href?>"><img src="<?=$surface?>" class="avatar">
+                    <div class="body" style="height: 112px;">
+						<span class="t"><?=$title?></span>
+						<span class="author"><?=$author?></span>
+						<span class="btn">立即阅读</span>
+                        <p><?=$intro?></p>
                     </div>
                 </a>
-            </div><div class="item">
-                <a href="/Home/Novel/novelinfo/id/47"><img src=" http://becold.cn/Public/attached/2017/09/16/novel2017091659bcaab01442a.jpg" class="avatar">
-                    <div class="body" style="height: 112px;"><span class="t">画地为牢：我的老公是无赖</span><span class="author">莫雅</span><span class="btn">立即阅读</span>
-                        <p>一纸婚约把他们绑在一起，他年少气盛，厌恶被人安排，冷落她三年，最后变成了折磨她。 他想,就这样互相折磨到永远吧。 七年后…… 一张尿布摔在他的脸上，他欲哭无泪。 “霍霖云，还不快去洗尿片！” 她大声地吼着，他想说什么，还是没有说，妻子大于天啊， 她得意地笑着，谁叫你当初那样虐我，就让宝宝虐死你！ 是谁说的，就这样被你征服，不对不对，就这样折磨他到永远。</p>
-                    </div>
-                </a>
-            </div>    </div>
+				</div>
+			<?php endif; ?>
+		<?php endforeach;?>
+	</div>
 </div>
 <!--新书推荐 end-->
+
 <!--限时免费 begin-->
 <div class="recommend free bor-top">
     <div class="title">
-        <h3>限时免费</h3><span class="time" id="downdate_box" startdate="2017/11/02"><!--倒计时: 3天--><!--<i class="num">08</i>--><!--<small>:</small>--><!--<i class="num">40</i>--><!--<small>:</small>--><!--<i class="num">03</i>--></span></div>
+        <h3>限时免费</h3><span class="time" id="downdate_box" startdate="2017/11/12"><!--倒计时: 3天--><!--<i class="num">08</i>--><!--<small>:</small>--><!--<i class="num">40</i>--><!--<small>:</small>--><!--<i class="num">03</i>--></span></div>
     <div class="entry">
         <ul>
             <li>
@@ -449,25 +505,20 @@
     </div>
     <div class="entry">
         <ul>
-                        <li>
-                <a href="/Home/Novel/novelinfo/id/890"><i class="num">1</i><span>桃色乡村</span><small>清酒半壶</small></a>
-            </li>
-                        <li>
-                <a href="/Home/Novel/novelinfo/id/900"><i class="num">2</i><span>那手，我下针</span><small>逸尘</small></a>
-            </li>
-                        <li>
-                <a href="/Home/Novel/novelinfo/id/58"><i class="num">3</i><span>透视村医</span><small>小脚丫</small></a>
-            </li>
-                                    <li>
-                <a href="/Home/Novel/novelinfo/id/893"><i class="num">4</i><span>和后妈同居的日子</span><small>问白</small></a>
-            </li>
-                        <li>
-                <a href="/Home/Novel/novelinfo/id/932"><i class="num">5</i><span>好色艳妇</span><small>纯情小处男</small></a>
-            </li>
-                        <li>
-                <a href="/Home/Novel/novelinfo/id/796"><i class="num">6</i><span>寡嫂</span><small>喝杯浓茶</small></a>
-            </li>
-            
+			<?php foreach( $popular as $k => $v) : ?>
+				<?php 
+					$num = $k + 1;
+					$href = "/home/Novel/novelinfo/id/".$v['id'];
+					$title = $v['title'];
+					$author = $v['author'];
+					$intro = $v['intro'];
+				?>
+				<li>
+					<a href="<?=$href?>">
+						<i class="num"><?=$num?></i><span><?=$title?></span><small><?=$author?></small>
+					</a>
+				</li>
+			<?php endforeach; ?>
         </ul>
     </div>
 </div>

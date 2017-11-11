@@ -129,3 +129,4 @@ ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
 更多细节参阅 [LICENSE.txt](LICENSE.txt)
 # qiezi
 #请注意在home/view/novel/show.html中有一行hidden的input标签，写了域名domain的，这行要弄清楚咋回事
+#热门及新书列表的html，下滑刷新的代码。

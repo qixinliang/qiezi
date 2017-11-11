@@ -15,10 +15,99 @@ class Index{
 		$rows = $nObj->where('is_carousel',1)->limit(6)->order('id','desc')->select();
 		return $rows;
 	}
+
+	//获取主编推荐数据-9条
+	protected function getRecommend(){
+		$nObj	= new NovelModel();
+		$rows	= $nObj->where('is_recommend',1)->limit(9)->order('id','desc')->select();
+		return $rows;
+	}
+
+	//获取热门小说，首页显示三部
+	protected function getHot(){
+		$nObj = new NovelModel();	
+		$rows = $nObj->where('is_hot',1)->limit(3)->order('id','desc')->select();
+		return $rows;
+	}
+
+	//新书,5条数据，3个横排，2个竖排
+	protected function getNew(){
+		$nObj = new NovelModel();
+		$rows = $nObj->where('is_new',1)->limit(5)->order('id','desc')->select();
+		return $rows;
+	}
+
+	//畅销书籍
+	protected function getPopular(){
+		$nObj = new NovelModel();
+		$rows = $nObj->where('is_popular',1)->limit(6)->order('id','desc')->select();
+		return $rows;
+	}
+
+	//重组数据
+	private function _assemble($rows){
+		$output = [];
+		foreach($rows as $r){
+			$id			= isset($r->id)? $r->id : 1;
+			$surface	= isset($r->surface)? $r->surface : '';
+			$title		= isset($r->name)? $r->name : '';
+
+			$aid		= isset($r->aid)? $r->aid : 1;
+			$a			= AuthorModel::get($aid);
+			$author		= isset($a->name)? $a->name : '';
+			$intro		= isset($r->intro)? $r->intro : '';
+			$tmp		= [
+				'id'		=> $id,
+				'surface'	=> $surface,
+				'title'		=> $title,
+				'author'	=> $author,
+				'intro'		=> $intro
+			];
+			$output[] = $tmp;
+		}
+		return $output;
+	}
+
 	public function index(){
-		//-获取轮播数据
+		//-轮播数据
 		$carousels = $this->getCarousel();
-		return view('index',['carousels' => $carousels,]);
+
+		//-主编推荐数据
+		$rows = $this->getRecommend();
+		$first	= [];
+		$second = [];
+		$third	= [];
+		foreach($rows as $k => $v){
+			if($k % 3 == 0)	{
+				$first[] = $v;
+			}else if ($k % 3 == 1){
+				$second[] = $v;
+			}else{
+				$third[] = $v;
+			}
+		}
+
+		//热门小说
+		$rows = $this->getHot();
+		$hot  = $this->_assemble($rows);
+
+		//新书推荐
+		$rows = $this->getNew();
+		$new  = $this->_assemble($rows);
+
+		//畅销书单
+		$rows	 = $this->getPopular();
+		$popular = $this->_assemble($rows);
+
+		return view('index',[
+			'carousels' => $carousels,
+			'first'		=> $first,
+			'second'	=> $second,
+			'third'		=> $third,
+			'hot'       => $hot,
+			'new'		=> $new,
+			'popular'   => $popular,
+		]);
 	}
 
 	public function search(){
