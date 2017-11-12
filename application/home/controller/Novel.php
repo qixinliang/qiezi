@@ -14,24 +14,29 @@ class Novel{
 		$request = Request::instance();
 		$p = $request->param();
 		if(!isset($p['id']) || empty($p['id'])){
-			//FIXME 返回特定响应／错误界面／抛异常？
-			return -1;
+			return json([
+				'error_code' => -1,	
+				'error_msg'  => '请求参数错误'
+			]);
 		}
 		$id = (int)$p['id'];
 		$row = NovelModel::get($id);
 		if(!isset($row) || empty($row)){
-			return -1;	
+			return json([
+				'error_code' => -1,	
+				'error_msg'  => '未获取到小说数据'
+			]);
 		}
 
 		//分类
 		$kid = isset($row->kid)? $row->kid : 1;
 		$k = KindModel::get($kid);
-		$kind = isset($k->name)? $k->name : '都市';
+		$kind = isset($k->name)? $k->name : '';
 
 		//作者
 		$aid = isset($row->aid)? $row->aid : 1;
 		$a = AuthorModel::get($aid); 
-		$author = isset($a->name)? $a->name : '笔者';
+		$author = isset($a->name)? $a->name : '';
 
 		//状态,默认0-已完结，1-连载中
 		$state = '已完结';
