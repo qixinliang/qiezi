@@ -55,11 +55,6 @@
         }
         document.body.appendChild(f);
         var m = a.elem = e("#" + a.id)[0];
-		console.log(a);
-		console.log("cccccc");
-		console.log(c);
-		console.log("------");
-		console.log(m);
         c.success && c.success(m), a.index = h++, a.action(c, m)
     }, j.prototype.action = function(a, b) {
         var c = this;

@@ -64,10 +64,18 @@ class Novel{
 		$request = Request::instance();
 		$p = $request->param();
 		if(!isset($p['novel_id']) || empty($p['novel_id'])){
-			return -1;
+			return json([
+				'error_code' => -1,	
+				'error_msg'  => '请求参数错误'
+			]);
 		}
 		$novelId = (int)$p['novel_id'];
-		$id = isset($p['id'])? (int)$p['id'] : 5508;
+		if(!isset($p['id']) || empty($p['id']) || $p['id'] == 'undefined'){
+			$id = 5508;	
+		}else{
+			$id = (int)$p['id'];	
+		}
+		var_dump($id);
 		$row = NovelModel::get($novelId);
 		if(!isset($row) || empty($row)){
 			return -1;
