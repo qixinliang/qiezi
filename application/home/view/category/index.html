@@ -15,9 +15,10 @@
   <link rel="dns-prefetch" href="//m.qirexiaoshuo.com" />
   <link rel="dns-prefetch" href="//cj.qirexiaoshuo.com" />
   <link rel="canonical" href="//m.qirexiaoshuo.com/book/book_cate" />
-  <link rel="stylesheet" type="text/css" href="//cj.qirexiaoshuo.com/static/newtheme/assets/css/base.css" />
-  <link rel="stylesheet" type="text/css" href="//cj.qirexiaoshuo.com/static/newtheme/assets/css/recharge.css" />
-  <script>        var t_text = "小说分类_免费小说_玄幻小说_都市小说_言情小说-奇热小说";
+  <link rel="stylesheet" type="text/css" href="/static/newtheme/assets/css/base.css" />
+  <link rel="stylesheet" type="text/css" href="/static/newtheme/assets/css/recharge.css" />
+  <script>        
+	var t_text = "小说分类_免费小说_玄幻小说_都市小说_言情小说-奇热小说";
         var url_channel = "";
         if(url_channel != ''){
             try{
@@ -26,9 +27,9 @@
             }catch(e){}
         }
     </script>
-  <script type="text/javascript" src="//cj.qirexiaoshuo.com/static/newtheme/assets/js/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="//cj.qirexiaoshuo.com/static/newtheme/assets/js/public.js"></script>
-  <script type="text/javascript" src="//cj.qirexiaoshuo.com/static/newtheme/assets/js/pay_3.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/public.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/pay_3.js"></script>
   <style>        body {
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -39,45 +40,37 @@
         }
     </style>
  </head>
+
  <body>
   <div class="header top-half">
-   <div class="inner">
-    <span class="pull-left"><a href="/"><i class="icon-home"></i>首页</a></span>
-    <h2>奇热小说</h2>
-   </div>
+	<div class="inner">
+		<span class="pull-left"><a href="/home/Index/index"><i class="icon-home"></i>首页</a></span>
+		<h2>茄子小说</h2>
+	</div>
   </div>
+
   <!-- 分类选择 begin -->
   <div class="classify-box mar-top bor-foot" id="cate_option">
    <div class="entry">
     <h3>类别</h3>
-    <ul>
-     <li><a href="javascript:;" type="sex" val="0">全部</a></li>
-     <li><a href="javascript:;" type="sex" val="2">女频</a></li>
-     <li><a href="javascript:;" type="sex" val="1" class="active">男频</a></li>
-    </ul>
+		<ul>
+			<li><a href="javascript:;" type="sex" val="0">全部</a></li>
+			<li><a href="javascript:;" type="sex" val="1" class="active">男频</a></li>
+			<li><a href="javascript:;" type="sex" val="2">女频</a></li>
+		</ul>
    </div>
+
    <div class="entry" id="cate_box">
     <h3>分类</h3>
     <ul>
-     <li><a href="javascript:;" type="tid" val="all" class="active">全部</a></li>
-     <li><a href="javascript:;" type="tid" val="3">都市</a></li>
-     <li><a href="javascript:;" type="tid" val="19">现言</a></li>
-     <li><a href="javascript:;" type="tid" val="20">古言</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="22">总裁</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="21">穿越</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="17">灵异</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="7">玄幻</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="30">异能</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="18">科幻</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="10">仙侠</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="29">幻想</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="15">历史</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="16">军事</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="33">校园</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="9">武侠</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="4">游戏</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="24">耽美</a></li>
-     <li style="display: none;"><a href="javascript:;" type="tid" val="8">奇幻</a></li>
+		<li><a href="javascript:;" type="tid" val="all" class="active">全部</a></li>
+		<?php foreach($kind as $k => $v) : ?>
+			<?php if($k < 3) : ?>
+				<li><a href="javascript:;" type="tid" val="<?=$v['id']?>"><?=$v['name']?></a></li>
+			<?php else :?>
+				<li style="display: none;"><a href="javascript:;" type="tid" val="<?=$v['id']?>"><?=$v['name']?></a></li>
+			<?php endif;?>
+		<?php endforeach;?>
     </ul>
     <span><a href="javascript:;" onclick="show_cate_all(this);" isshow="1">展开<i class="icon-open"></i></a></span>
    </div>
@@ -232,7 +225,7 @@
         uid = "15030022";
     })
 </script>
-  <script type="text/javascript" src="//cj.qirexiaoshuo.com/static/newtheme/assets/js/cate_3.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/cate_3.js"></script>
   <script>        var p = 1;
         var tid = "";
         var vip = "";
