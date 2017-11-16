@@ -4,8 +4,13 @@
  */
 namespace app\home\controller;
 use \think\Request;
-use app\home\model\Novel as NovelModel;
-use app\home\model\Author as AuthorModel;
+use \think\Config;
+use \think\Db;
+use app\home\model\Novel   as NovelModel;
+use app\home\model\Kind    as KindModel;
+use app\home\model\Author  as AuthorModel;
+use app\home\model\Chapter as ChapterModel;
+use app\home\model\Free    as FreeModel;
 
 class Index{
 
@@ -42,6 +47,18 @@ class Index{
 		$nObj = new NovelModel();
 		$rows = $nObj->where('is_popular',1)->limit(6)->order('id','desc')->select();
 		return $rows;
+	}
+	
+	//限免书籍
+	protected function getFree(){
+		$sql = "
+			SELECT  n.id,n.name title,n.kid,n.aid,n.surface,n.intro,a.name author FROM novel n
+			JOIN free  f ON n.id = f.novel_id
+			JOIN author a ON n.aid = a.id
+			ORDER BY n.id desc
+		";
+		$ret = Db::query($sql);
+		return $ret;
 	}
 
 	//重组数据
@@ -99,6 +116,10 @@ class Index{
 		$rows	 = $this->getPopular();
 		$popular = $this->_assemble($rows);
 
+		//限时免费
+		$freeEndTime = Config::get('free.end_time');
+		$free = $this->getFree();
+
 		return view('index',[
 			'carousels' => $carousels,
 			'first'		=> $first,
@@ -107,9 +128,12 @@ class Index{
 			'hot'       => $hot,
 			'new'		=> $new,
 			'popular'   => $popular,
+			'f_e_time'  => $freeEndTime,
+			'free'      => $free,
 		]);
 	}
 
+	//暂定根据书名模糊搜索
 	public function search(){
 		return view('search');	
 	}
