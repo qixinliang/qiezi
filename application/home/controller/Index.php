@@ -133,6 +133,57 @@ class Index{
 		]);
 	}
 
+	public function ajaxsearch(){
+		$r = Request::instance();	
+		$p = $r->param();
+		var_dump($p);
+		
+		$q = (isset($p['q']) && !empty($p['q']))? $p['q'] : '';
+
+		$sql = "
+			SELECT n.id,n.name title,n.kid,n.aid,n.surface,n.intro,n.state,a.name author FROM novel n
+			JOIN author a ON n.aid = a.id
+			WHERE n.name LIKE '%$q%'
+		";
+		$rows = Db::query($sql);
+		$ret  = [];
+		if(isset($rows) && !empty($rows)){
+			$count = count($rows);	
+			$ret['status'] = 1;
+			$ret['info']   = '数据获取成功';
+			$header = "<div class=\"hot-box\">";
+			$sum    = "<div class=\"title\">搜索“<i class=\"green\">$q</i>”结果，共<i class=\"green\">$count</i>条</div>";
+			$body = '';
+			foreach($rows as $r){
+				$href = "/home/Novel/novelinfo/id/" . $r['id'];
+				$surface = $r['surface'];
+				$title = $r['title'];
+
+				$body .= "<div class=\"entry\">
+				<div class=\"item\">
+				<a href=\"$href\">
+			<img src=\"$surface\" class=\"avatar\">
+			<div class=\"body\">
+				<span class=\"t\">
+				<span class=\"orange\">我被包养</span>的那些日子</span><!--<span class=\"author\">阿刀</span>-->
+				<span class=\"author\">完结</span>
+				<span class=\"btn\">立即阅读</span>
+				<p>$title</p>
+			</div>
+			</a>
+		</div>
+	</div>";
+			}
+
+			$footer = "</div>";
+			$html  = $header . $sum . $body . $footer;
+			$ret['data'] = $html;
+			return json($ret);
+		}else{
+			//FIXME ...
+			;	
+		}
+	}
 	//暂定根据书名模糊搜索
 	public function search(){
 		return view('search');	

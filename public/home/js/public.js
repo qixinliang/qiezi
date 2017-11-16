@@ -238,7 +238,7 @@ function key_search_list(){
     if(key_v == ''){
         return false;
     }
-    var url = "/Index/ajaxsearch";
+    var url = "/home/Index/ajaxsearch";
     var data = {q:key_v,p:1}
     $("#bhloading").show();
     AjaxJson(url,data,function(data){
@@ -263,7 +263,7 @@ function keyup_search(obj,type){
     var key_v = $(obj).val();
     if( parseInt(key_v.length) >0  ){
         $("#page_html").empty();
-        var url = "/Index/ajaxsearch";
+        var url = "/home/Index/ajaxsearch";
         var data = {key:key_v,type:type}
         AjaxJson(url,data,function(data){
             if(data.status*1 == 1){
@@ -303,7 +303,7 @@ function key_search_href() {
         return false;
     }
     hide_ser_box();
-    window.location.href = "/Index/search/q/"+key_v;
+    window.location.href = "/home/Index/search/q/"+key_v;
 }
 
 // 列表分页获取
