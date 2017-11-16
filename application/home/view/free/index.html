@@ -51,22 +51,23 @@
 		<!--限时免费 begin-->
 		<div class="recommend free bor-top mar-top">
 			<div class="title">
-				<h3>限时免费</h3><span class="time" id="downdate_box" startdate="2017/11/02 00:00:00"><!--倒计时: 3天--><!--<i class="num">08</i>--><!--<small>:</small>--><!--<i class="num">40</i>--><!--<small>:</small>--><!--<i class="num">03</i>--></span></div>
+				<h3>限时免费</h3><span class="time" id="downdate_box" startdate="<?=$free_end_time?>"><!--倒计时: 3天--><!--<i class="num">08</i>--><!--<small>:</small>--><!--<i class="num">40</i>--><!--<small>:</small>--><!--<i class="num">03</i>--></span></div>
 			<div class="entry">
 				<ul>
+					<?php foreach($free as $f): ?>
+						<?php
+							$href = "/home/Novel/novelinfo/id/" . $f['id'];
+							$surface = $f['surface'];
+							$title = $f['title'];
+						?>
 					<li>
-						<a href="/Home/Novel/novelinfo/id/423"><img src="http://becold.cn/Public/attached/2017/06/03/149646223670022.jpg"><i class="icon-free"></i>
-							<p>夜神之城</p>
+						<a href="<?=$href?>"><img src="<?=$surface?>"><i class="icon-free"></i>
+							<p><?=$title?></p>
 						</a>
-					</li><li>
-						<a href="/Home/Novel/novelinfo/id/430"><img src="http://becold.cn/Public/attached/2017/06/03/149646223773159.jpg"><i class="icon-free"></i>
-							<p>鬼帝的倾城狂后</p>
-						</a>
-					</li><li>
-						<a href="/Home/Novel/novelinfo/id/432"><img src="http://becold.cn/Public/attached/2017/06/03/149646223822677.jpg"><i class="icon-free"></i>
-							<p>天降特工：庶女傻后</p>
-						</a>
-					</li>				</ul>
+					</li>
+
+					<?php endforeach; ?>
+				</ul>
 			</div>
 		</div>
 		<!--限时免费 end-->
