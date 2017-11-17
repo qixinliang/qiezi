@@ -136,8 +136,8 @@ class Index{
 	public function ajaxsearch(){
 		$r = Request::instance();	
 		$p = $r->param();
-		var_dump($p);
 		
+		//搜索的关键字
 		$q = (isset($p['q']) && !empty($p['q']))? $p['q'] : '';
 
 		$sql = "
@@ -158,14 +158,24 @@ class Index{
 				$href = "/home/Novel/novelinfo/id/" . $r['id'];
 				$surface = $r['surface'];
 				$title = $r['title'];
+				$left = '';
+				$right = '';
+				if(preg_match("/(.*)$q(.*)/",$title,$matches)){
+					if(isset($matches[1]) && !empty($matches[1])){
+						$left = $matches[1];
+					}
+					if(isset($matches[2]) && !empty($matches[2])){
+						$right = $matches[2];
+					}
+				}
 
 				$body .= "<div class=\"entry\">
 				<div class=\"item\">
 				<a href=\"$href\">
 			<img src=\"$surface\" class=\"avatar\">
 			<div class=\"body\">
-				<span class=\"t\">
-				<span class=\"orange\">我被包养</span>的那些日子</span><!--<span class=\"author\">阿刀</span>-->
+				<span class=\"t\">$left<span class=\"orange\">$q</span>$right</span>
+				<!--<span class=\"author\"></span>-->
 				<span class=\"author\">完结</span>
 				<span class=\"btn\">立即阅读</span>
 				<p>$title</p>
@@ -180,9 +190,43 @@ class Index{
 			$ret['data'] = $html;
 			return json($ret);
 		}else{
-			//FIXME ...
-			;	
+			$header = "<div class=\"title\">没有找到“<i class=\"green\">$q</i>”相关结果，看看下面这些是不是您要找的：</div>
+			<div class=\"hot-box\">
+			<div class=\"entry\">";
+			;
+			$rows = $this->getRandom();
+			$body = '';
+			foreach($rows as $r){
+			    $href = "/home/Novel/novelinfo/id/" . $r['id'];
+			    $surface = $r['surface'];
+			    $title = $r['title'];
+				$author = $r['author'];
+				$intro = $r['intro'];
+				$body .= "<div class=\"item\"><a href=\"$href\"><img src=\"$surface\" class=\"avatar\" /><div class=\"body\"><span class=\"t\">$title</span><!--<span class=\"author\">总经理秘书</span>--><span class=\"author\">完结</span><span class=\"btn\">立即阅读</span><p>$intro</p></div></a></div>";
+			}
+			$footer = "</div></div>";
+			$html  = $header.$body.$footer;
+			$ret = [
+				'status' => 1,
+				'info'	=> '获取成功',
+				'data'	=> $html
+			];
+			return json($ret);
 		}
+	}
+
+	//随机推荐
+	protected function getRandom(){
+		//由于目前书库书籍比较少，暂定$random为0
+		$random = rand(0,9999);
+		$random = 0;
+		$sql = "
+			SELECT n.id,n.name title,n.kid,n.aid,n.surface,n.intro,n.state,a.name author FROM novel n
+			JOIN author a ON n.aid = a.id
+			LIMIT $random,6
+		";
+		$rows = Db::query($sql);
+		return $rows;
 	}
 	//暂定根据书名模糊搜索
 	public function search(){
