@@ -159,7 +159,12 @@ class Novel{
 	public function cata(){
 		$r = Request::instance();
 		$p = $r->param();
-		$cata = NULL;
+
+		$cata = '';
+		if(isset($p['novel_id']) && !empty($p['novel_id'])){
+			$nid = (int)$p['novel_id'];
+			$cata = (new ChapterModel())->getCatalog($nid);
+		}
 		return view('cata',['cata' => $cata]);
 	}
 }
