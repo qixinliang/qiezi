@@ -1,6 +1,6 @@
 <?php
 /*
- * 小说控制器
+ * 书籍控制器
  */
 namespace app\home\controller;
 use \think\Request;
