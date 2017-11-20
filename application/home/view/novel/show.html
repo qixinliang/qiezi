@@ -1,175 +1,547 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<meta name="apple-touch-fullscreen" content="yes" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<!-- 删除苹果默认的工具栏和菜单栏 -->
-		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<!-- 设置苹果工具栏颜色 -->
-		<meta name="format-detection" content="telphone=no, email=no" />
-		<!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-		<meta name="renderer" content="webkit" />
-		<!-- 启用360浏览器的极速模式(webkit) -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<!-- 避免IE使用兼容模式 -->
-		<meta name="HandheldFriendly" content="true" />
-		<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
-		<meta name="MobileOptimized" content="480" />
-		<!-- 微软的老式浏览器 -->
-		<meta name="screen-orientation" content="portrait" />
-		<!-- uc强制竖屏 -->
-		<meta name="x5-orientation" content="portrait" />
-		<!-- QQ强制竖屏 -->
-		<meta name="format-detection" content="telephone=no" />
-		<!-- 去除苹果浏览器自带link -->
-		<title>{$data['novel']->name}</title>
-		<script src="/page/js/prefixfree.min.js"></script>
-		<link href="/page/css/beos.css" rel="stylesheet" />
-		<link href="/page/css/swiper-3.4.2.min.css" rel="stylesheet" />
-		<link href="/page/css/Style.css" rel="stylesheet" />
-		<link href="/page/css/front.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="/page/layer/need/layer.css"/>
-	</head>
-	<body>
-		<section class="section">
-			<h3>加载中...</h3>
-		</section>
-		<input type="hidden" id="domain" value="tp5.com" />
-		<div class="MaxBody">	
-			
-			<!--隐藏菜单-->
-				<div class="Huanxing">
-					<div class="Top">
-						<ul>						
-							<li>
-								<a onclick="backs()" title="返回上一页"><img src="/page/img/icon-fh.png" alt="返回上一页" /></a>
-							</li>
-							<li>第二章</li>
-							<li>
-								<a href="/Home/Novel/getClassList" title="我的书库"><img src="/page/img/icon-sj.png" alt="我的书库" /></a>
-							</li>
-							<li>
-								<a href="/Home/User/recharge" title="充值"><img src="/page/img/icon-rmb.png" alt="充值" /></a>
-							</li>
-						</ul>
-					</div>					 
-					<input type="hidden" id="novel_id" value="{$data['novel']->id}" />
-					<div class="Bottom">
-						<ul>
-							<li>
-								<a class="muluButton">
-									<img src="/page/img/icon-cd.png" alt="目录" />
-									<p>目录</p>
-								</a>
-							</li>
-							<li>
-								<a class="Yejian">
-									<img src="/page/img/icon-yl.png" alt="夜间模式" />
-									<p>夜间</p>
-								</a>
-							</li>
-							<li>
-								<a class="Shuqian">
-									<img src="/page/img/icon-sq.png" alt="书签" />
-									<p>书签</p>
-								</a>
-							</li>
-							<li>
-								<a href="/Home/Index/index">
-									<img src="/page/img/home100.png" alt="返回首页" />
-									<p>首页</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!--隐藏菜单-->
+<html>
+ <head>
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="designWidth=750, width=device-width,user-scalable=no,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+  <meta content="telephone=no" name="format-detection" />
+  <meta http-equiv="Cache-Control" content="no-transform " />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="applicable-device" content="mobile" />
+  <title>「近身特工」第三章：美女房客！在线阅读 - 奇热小说</title>
+  <meta name="Keywords" content="近身特工,：美女房客！,近身特工全文在线阅读,雨上寒烟" />
+  <meta name="Description" content="奇热小说为大家提供雨上寒烟的近身特工最新章节在线阅读，近身特工全文阅读无广告弹窗，手机在线看小说就选奇热小说。" />
+  <link rel="dns-prefetch" href="//w.qirexiaoshuo.com" />
+  <link rel="dns-prefetch" href="//cj.qirexiaoshuo.com" />
+  <link rel="canonical" href="//m.qirexiaoshuo.com/book/3735/0/" />
+  <link rel="stylesheet" type="text/css" href="/static/newtheme/assets/css/s0911.css" />
+  <style>        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+  <script type="text/javascript">        !function (a, b) { function c() { var b = f.getBoundingClientRect().width; b / i > 540 && (b = 540 * i); var c = b / 10; f.style.fontSize = c + "px", k.rem = a.rem = c } var d, e = a.document, f = e.documentElement, g = e.querySelector('meta[name="viewport"]'), h = e.querySelector('meta[name="flexible"]'), i = 0, j = 0, k = b.flexible || (b.flexible = {}); if (g) { console.warn("将根据已有的meta标签来设置缩放比例"); var l = g.getAttribute("content").match(/initial\-scale=([\d\.]+)/); l && (j = parseFloat(l[1]), i = parseInt(1 / j)) } else if (h) { var m = h.getAttribute("content"); if (m) { var n = m.match(/initial\-dpr=([\d\.]+)/), o = m.match(/maximum\-dpr=([\d\.]+)/); n && (i = parseFloat(n[1]), j = parseFloat((1 / i).toFixed(2))), o && (i = parseFloat(o[1]), j = parseFloat((1 / i).toFixed(2))) } } if (!i && !j) { var p = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)), q = a.devicePixelRatio; i = p ? q >= 3 && (!i || i >= 3) ? 3 : q >= 2 && (!i || i >= 2) ? 2 : 1 : 1, j = 1 / i } if (f.setAttribute("data-dpr", i), !g) if (g = e.createElement("meta"), g.setAttribute("name", "viewport"), g.setAttribute("content", "initial-scale=" + 1 + ", maximum-scale=" + 1 + ", minimum-scale=" + 1 + ", user-scalable=no"), f.firstElementChild) f.firstElementChild.appendChild(g); else { var r = e.createElement("div"); r.appendChild(g), e.write(r.innerHTML) } a.addEventListener("resize", function () { clearTimeout(d), d = setTimeout(c, 300) }, !1), a.addEventListener("pageshow", function (a) { a.persisted && (clearTimeout(d), d = setTimeout(c, 300)) }, !1), "complete" === e.readyState ? e.body.style.fontSize = 12 * i + "px" : e.addEventListener("DOMContentLoaded", function () { e.body.style.fontSize = 12 * i + "px" }, !1), c(), k.dpr = a.dpr = i, k.refreshRem = c, k.rem2px = function (a) { var b = parseFloat(a) * this.rem; return "string" == typeof a && a.match(/rem$/) && (b += "px"), b }, k.px2rem = function (a) { var b = parseFloat(a) / this.rem; return "string" == typeof a && a.match(/px$/) && (b += "rem"), b } }(window, window.lib || (window.lib = {}));
+    </script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/public.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/pay_3_1.js"></script>
+  <script type="text/javascript" src="/static/newtheme/assets/js/book_read_3_1.js"></script>
+  <script>        var uid = "15030022";
+        var loginurl = "";
+    </script>
+ </head>
+ <body class="gray-mode">
+  <article class="article-box clearfix">
+   <header class="header clearfix">
+    <h1 class="title"><?=$chapter[0]['chapter_no']?>：<?=$chapter[0]['chapter_name']?>！</h1>
+    <div class="book-info">
+     <a href="/home/Novel/novelinfo/id/<?=$novel[0]['id']?>"><img src="<?=$novel[0]['surface']?>" alt="<?=$novel[0]['name']?>" />
+      <div class="text">
+	  <?=$novel[0]['name']?>
+      </div></a>
+    </div>
+   </header>
+   <div class="entry" id="read_conent_box">
+	<?php echo $chapter[0]['content']; ?>
+   </div>
+   <aside class="row feif_unlock">
+    <div class="col">
+     <a href="/home/Novel/show/novel_id/<?=$chapter[0]['novel_id']?>/id/<?=$chapter[0]['pre_chapter_id']?>" class="btn">上一章</a>
+    </div>
+    <div class="col">
+     <a href="javascript:;" onclick="show_seting()" class="dir"><i class="icon-dir"></i></a>
+    </div>
+    <div class="col">
+     <a href="/home/Novel/show/novel_id/<?=$chapter[0]['novel_id']?>/id/<?=$chapter[0]['next_chapter_id']?>/" class="btn">下一章</a>
+    </div>
+   </aside>
+   <aside class="bar feif_unlock">
+   <a href="/" class="btn"><i class="icon-home"></i> 回首页看更多精彩小说</a>
+   </aside>
+   <!--下载app begin-->
+   <!--
+   <aside class="bar feif_unlock">
+    <a href="https://itunes.apple.com/cn/app/id1224888764?mt=8" class="btn"><i class="icon-xz"></i>安装APP，阅读更方便、省流量！</a>
+   </aside>
+   -->
+   <!--下载app end-->
+  </article>
+  <section class="news-box clearfix feif_unlock">
+   <ul class="list clearfix" id="read_list"></ul>
+  </section>
+  <!--优惠劵倒计时 begin-->
+  <div class="side-bar" id="coupon_count_down_lay" style="display: none;">
+   <div class="inner clearfix">
+    <a href="javascript:;" class="media-time" onclick="$('#bh_coupon_use_lay').show();">
+     <div class="time" id="coupon_count_down_box"></div></a>
+    <a href="javascript:;" onclick="hide_coupon_count_down_lay();" class="close"><i class="icon-close"></i></a>
+   </div>
+  </div>
+  <!--优惠劵倒计时 end-->
+  <!--提示领取 begin-->
+  <div class="backdrop" id="coupon_lay" style="display: none;">
+   <div class="modal">
+    <div class="inner clearfix">
+     <div class="nfm-box clearfix">
+      <div class="head">
+       <div class="title">
+        温馨提示
+       </div>
+      </div>
+      <div class="body clearfix">
+       <div class="text">
+        <p>您有一个新人礼包没有领取</p>
+        <p class="red">可能会有惊喜哦，是否马上领取？</p>
+       </div>
+      </div>
+      <div class="action clearfix">
+       <div class="col">
+        <a href="javascript:;" onclick="show_coupon_use_lay();" class="btn confirm">立即领取</a>
+       </div>
+       <div class="col">
+        <a href="javascript:;" onclick="hide_prompt_coupon_lay();" class="btn cancel">取消</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--提示领取 end-->
+  <!--查看优惠劵 begin-->
+  <div class="backdrop" id="bh_coupon_use_lay" style="display: none;">
+   <div class="modal">
+    <div class="coupon-wrapper clearfix">
+     <div class="head">
+      <img src="//cj.qirexiaoshuo.com/static/newtheme/assets/images/20170916/ch.png" />
+      <div class="container">
+       <div class="main">
+        <div class="title">
+         <strong>5</strong>元限时优惠券
+        </div>
+        <div class="text" id="coupon_use_down_box">
+          有效期: 
+         <span class="num">10</span>分
+         <span class="num">00</span>秒 
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="body">
+      <input type="hidden" value="5" id="coupinmoney" />
+      <div class="title">
+       充5元送5元
+      </div>
+      <div class="text">
+       5元=50书币+送50书币
+      </div>
+      <div class="action">
+       <a href="javascript:;" onclick="show_coupon_choice_pay();show_coupon_count_down_lay();" class="btn confirm">立即使用</a>
+       <a href="javascript:;" onclick="hide_coupon_use_lay();" class="btn cancel">关闭</a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--查看优惠劵 end-->
+  <!--设置 begin-->
+  <div class="backdrop" id="bh_seting_lay" style="display: none;">
+   <div class="modal">
+    <div class="inner clearfix">
+     <div class="settings-box">
+      <div class="head hls1-bottom clearfix">
+       <div class="title">
+        设置
+       </div>
+      </div>
+      <div class="list clearfix">
+       <div class="item hls1-bottom">
+        <a href="javascript:;" onclick="show_font_lay();"><i class="icon-font-size"></i> 字体大小</a>
+       </div>
+       <div class="item hls1-bottom">
+        <a href="javascript:;" onclick="show_back_lay();"><i class="icon-bg-color"></i> 背景颜色</a>
+       </div>
+       <div class="item hls1-bottom">
+        <a href="javascript:;" onclick="oneadd_userbook_shelf_msg();hide_seting();"><i class="icon-books"></i> 放入书架</a>
+       </div>
+       <div class="item hls1-bottom">
+        <a href="/book/3735/list/?&amp;p=1&amp;cid=208421"><i class="icon-directory"></i> 返回目录</a>
+       </div>
+	   <!--
+       <div class="item">
+        <a href="javascript:;" onclick="show_down_lay();"><i class="icon-download"></i> 离线阅读</a>
+       </div>
+	   -->
+      </div>
+     </div>
+     <div class="pull-action">
+      <a onclick="hide_seting();"><i class="icon-close"></i></a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--设置 end-->
+  <!--设置字体 begin-->
+  <div class="backdrop" id="bh_font_lay" style="display:none;">
+   <div class="modal">
+    <div class="inner clearfix">
+     <div class="settings-box">
+      <div class="head clearfix">
+       <div class="title">
+        设置
+       </div>
+      </div>
+      <div class="row">
+       <div class="col">
+        <a href="javascript:;" id="read_font_4" onclick="set_font(0.4);" class="">小</a>
+        <!-- #read_conent_box { font-size: .4rem; } -->
+       </div>
+       <div class="col">
+        <a href="javascript:;" id="read_font_48" onclick="set_font(0.48);" class="active">中</a>
+        <!-- #read_conent_box { font-size: .48rem; } -->
+       </div>
+       <div class="col">
+        <a href="javascript:;" id="read_font_55" onclick="set_font(0.55);" class="">大</a>
+        <!-- #read_conent_box { font-size: .55rem; } -->
+       </div>
+      </div>
+     </div>
+     <div class="pull-action">
+      <a onclick="hide_font_lay();"><i class="icon-close"></i></a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--设置字体 end-->
+  <!--设置背景 begin-->
+  <div class="backdrop" id="bh_back_lay" style="display: none;">
+   <div class="modal">
+    <div class="inner clearfix">
+     <div class="settings-box">
+      <div class="head clearfix">
+       <div class="title">
+        背景颜色
+       </div>
+      </div>
+      <div class="row">
+       <div class="col">
+        <a href="javascript:;" id="back_gray-mode" onclick="set_back('gray-mode')" class="active">默认</a>
+       </div>
+       <div class="col">
+        <a href="javascript:;" id="back_yellow-mode" onclick="set_back('yellow-mode')" class="">舒适</a>
+       </div>
+       <div class="col">
+        <a href="javascript:;" id="back_black-mode" onclick="set_back('black-mode')" class="">夜晚</a>
+       </div>
+      </div>
+     </div>
+     <div class="pull-action">
+      <a onclick="hide_back_lay();"><i class="icon-close"></i></a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--设置背景 end-->
+  <!--离线下载 begin-->
+  <div class="backdrop" id="bh_down_lay" style="display: none;">
+   <div class="modal">
+    <div class="inner clearfix">
+     <div class="settings-box">
+      <div class="thead">
+        离线下载本书 
+       <br />请先下载奇热小说客户端 
+      </div>
+      <div class="group">
+       <div class="col">
+        <a href="https://itunes.apple.com/cn/app/id1224888764?mt=8" class="btn primary">去下载</a>
+       </div>
+       <div class="col">
+        <a href="javascript:;" onclick="hide_down_lay();" class="btn clean">暂不下载</a>
+       </div>
+      </div>
+     </div>
+     <div class="pull-action">
+      <a onclick="hide_down_lay();"><i class="icon-close"></i></a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!--离线下载 end-->
+  <!--login begin-->
+  <div class="backdrop bh_wxlogin_lay" style="display: none;"></div>
+  <div class="modal bh_wxlogin_lay" style="margin-top: -114px; display: none;">
+   <div class="inner clearfix">
+    <div class="wechat-login-box">
+     <div class="head">
+      <div class="title">
+       您还未登陆哦！
+      </div>
+     </div>
+     <div class="body mt-10 clearfix">
+      <a href="" class="btn qq mt-10">QQ一键登录</a>
+     </div>
+    </div>
+    <div class="bottom">
+      登录有问题？
+     <a href="/my/kefu.html">联系客服</a>
+    </div>
+    <div class="pull-action">
+     <a onclick="hide_login();"><i class="icon-close"></i></a>
+    </div>
+   </div>
+  </div>
+  <!--login end-->
+  <!-- 选择充值书币数额面板 -->
+  <div class="backdrop bh_recharge_box" style="display: none;"></div>
+  <div class="item2p recharge_sc bh_recharge_box" style="display: none;">
+   <div class="inner">
+    <div class="title">
+     <strong>请选择充值金额</strong>
+     <p class="read">首充翻倍送书币</p>
+    </div>
+    <div class="close">
+     <a href="javascript:;" onclick="hide_recharge_box();coupon_lay();"></a>
+    </div>
+    <div class="entry">
+     <ul>
+      <li><a onclick="switchCoins(this,50)" class="active"><i class="chong-icon-check"></i><span class="jine">50元</span><i class="cz-xian"></i>
+        <div class="rt">
+         <span class="tip">500书币+300书币</span>
+         <i class="reward">(多送30元)</i>
+        </div></a></li>
+      <li><a onclick="switchCoins(this,30)"><span class="jine">30元</span><i class="cz-xian"></i>
+        <div class="rt" style="line-height: 45px;">
+         <span class="tip">300书币</span>
+         <i class="reward">(多送0元)</i>
+        </div></a></li>
+      <li><a onclick="switchCoins(this,100)"><i class="chong-icon-check"></i><span class="jine">100元</span><i class="cz-xian"></i>
+        <div class="rt">
+         <span class="tip">1000书币+800书币</span>
+         <i class="reward">(多送80元)</i>
+        </div></a></li>
+      <li><a onclick="switchCoins(this,200)" class=""><i class="chong-icon-check"></i><span class="jine">200元</span><i class="cz-xian"></i>
+        <div class="rt">
+         <span class="tip">2000书币+2000书币</span>
+         <i class="reward">(多送200元)</i>
+        </div></a></li>
+     </ul>
+    </div>
+    <div class="btn">
+     <a href="javascript:;" onclick="show_choice_pay();">立即充值</a>
+    </div>
+   </div>
+   <input type="hidden" value="50" id="coinmoney" />
+  </div>
+  <!-- 选择充值书币数额面板 -->
+  <!-- 支付浮层 -->
+  <div class="backdrop choice_pay_box" style="display: none;"></div>
+  <div class="item2p choice-pay choice_pay_box" style="display: none;">
+   <div class="inner">
+    <div class="title">
+     <strong>选择支付方式</strong>
+    </div>
+    <div class="close">
+     <a href="javascript:;" onclick="hide_choice_pay();"></a>
+    </div>
+    <div class="entry">
+     <ul>
+      <!--<li><a href="#"><i class="icon-ios"></i>苹果支付</a></li>-->
+      <li id="now_wx"><a href="javascript:;" onclick="apiPay_now_fun();"><i class="icon-wechat"></i>微信支付</a></li>
+      <li><a href="javascript:;" onclick="apiPay_zfb_fun();"><i class="icon-alipay"></i>支付宝支付</a></li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  <input type="hidden" id="pay_typeproid" value="2" />
+  <!--支付浮层 -->
+  <script>    // 支付宝支付
+    var ispayon = 0;
+    var paynow_url = "/nowpay/pay";
+    function apiPay_now_fun(pro_id){
+        if(ispayon == 1){
+            return false;
+        }
+        ispayon = 1;
+        if(!pro_id){
+            pro_id = $('#pay_typeproid').val();
+            if(parseInt(pro_id) < 1){
+                pro_id = 2;
+            }
+        }
+        // pro_id  1购买VIP  2购买书币  3打赏
+        if(pro_id == 1){
+            paytitle = '购买VIP';
+            payfee = $("#vipmoney").val();
+        }
+        if(pro_id == 2){
+            paytitle = '购买书币';
+            payfee = $("#coinmoney").val();
+        }
+        if(pro_id == 3){
+            paytitle = '打赏';
+            payfee = $("#dasmoney").val();
+        }
+        if(pro_id == 4){
+            paytitle = '优惠券';
+            payfee = $("#coupinmoney").val();
+        }
+        if(pro_id == 5){
+            paytitle = '整本购买';
+            payfee = $("#shorebookpay").val();
+        }
+        payfee = parseFloat(payfee)+0;
+        if(payfee < 0.01 || isNaN(payfee)){
+            bh_msg_tips(paytitle+'金额不能小于0.01元');
+            return false;
+        }
+        hide_choice_pay();
+        hide_vip_choice_pay();
+        checkandnowpay(payfee,pro_id,paytitle,bid,encodeURI(window.location.href));
+    }
 
-			<!--目录-->
-			<div class="Muli">
-				<div id="fdleft">
-					<div class="fdleftimg"><img src="/page/img/icon-fh.png" width="100%"/></div>
-				</div>
-				<ul style="float: left;">
-					
-				</ul>				
-			</div>
-			<!--目录-->
+    var nowPayQuery = false;
+    var payPackage = null;
+    function checkandnowpay(fee,product_id,product_name,book_id,callback){
+        var report_url = '/nowpay/pay';
+        var report_data = {fee:fee,product_id:product_id,product_name:product_name,bid:book_id,callback:callback,random:Math.floor(Math.random() * 10000 + 1)};
+        AjaxJson(report_url,report_data,function(res){
+            ispayon = 0;
+            if(res.status*1 == 1){
+                payPackage = res.data;
+                nowPayQuery = true;
+                window.location.href=payPackage.weixin_url;
+                //不知道他们的同步回调（前台回调）是怎么回事
+            }else if(res.status*1 == -1){
+                //需要登录
+                bh_msg_tips("需要登录，请重新登录重试");
+                show_login();
+            }else if(res.status*1 == -2){
+                //输入参数有问题
+                bh_msg_tips("选择的充值信息有误，请重新选择重试");
+            }else if(res.status*1 == -11){
+                //输入参数有问题
+                bh_msg_tips("下单失败，请稍后重试");
+            }else {
+                bh_msg_tips(res.msg);
+            }
+        });
+    }
+    function pageFocusQueryNowPay(){
+        //查询是否支付成功，成功则提示成功，然后刷新页面
+        if(nowPayQuery){
+            AjaxJson('/nowpay/ajax_query',payPackage,function(res){
+                if(res.status*1==1){
+                    bh_msg_tips("支付成功");
+                    setTimeout(function(){
+                        window.location.reload();
+                    },500);
+                    return;
+                }else{
+//                    bh_msg_tips("未支付成功");
+                    return;
+                }
+            });
+        }
+    }
 
-			<!-- Swiper -->
-			<div class="swiper-container">
-				<div class="centerbox"></div>
-				<div class="swiper-wrapper "></div>
-				<div class="swiper-pagination"></div>
-				<div class="swiper-button-next swiper-button-white"></div>
-       			<div class="swiper-button-prev swiper-button-white"></div>
-			</div>
-		</div>
-		<input type="hidden" id="novel_title" value="{$data['novel']->name}" />
-		<input type="hidden" id="chapter_id" value="{$data['id']}" />
-		<input type="hidden" id="novel_img" value="{$data['novel']->surface}" />
-		<div class="recharge">
-			<div class="box">
-				<div class="reico"><img src="/page/img/gthico.png" width="100%"/></div>
-				<div class="text">
-					<p>您的可用余额已不足</p>
-					<p class="textsmall">请充值！</p>
-				</div>
-				<div class="czico"><a href="/Home/User/recharge">充值</a></div>
-			</div>
-		</div>	
-		<input type="hidden" id="sign" value=""/>
-		<input type="hidden" id="tongjiurl" value="1266847429"/>
-		<!--
-		<iframe id="myFrame" src="/Home/Novel/tongji.html?tongji=1266847429" style="display: none;"></iframe>
-		-->
-		<div class="gz">
-			<div class="box">
-				<div class="text">
-					<p>关注作者授权公众号继续阅读</p>
-					<p class="textsmall">由于版权问题，请关注后继续阅读</p>
-				</div>
-				<div class="reico"><img src="/attached/other/zuiqi_novel.jpg" width="100%"/></div>
-				<div class="text">
-					<p>长按上图识别二维码关注</p>
-				</div>
-			</div>
-		</div>
-		<div class="jzhd"></div>
-		<div class="loginright ltop">
-			<div class="loginrights"><img src="/page/img/loading-2.gif"/></div>
-		</div>
-		<div class="loginright lbottom">
-			<div class="loginrights"><img src="/page/img/loading-2.gif"/></div>
-		</div>
-		<div class="signbox">
-			<div class="signboxcontent">
-				<h3>签到成功</h3>
-				<p>每日首次阅读，赠送<span>20</span>书币</p>
-				<p>请明日继续签到哦</p>
-				<div class="contentbtn">我知道啦</div>
-			</div>
-		</div>
-		<div class='workbigbox'>
-			<a href="">
-				<div class='workgybox'>
-					<div class='worktitle'>
-						<div class='userimg'>
-							<img src=''/>
-						</div>
-						<div class='username'></div>
-						<div class='workright'></div>
-					</div>
-					<div class='workcontent'></div>
-				</div>
-			</a>
-		</div>
-	</body>
+    $(function(){
+        setInterval(function () {
+            pageFocusQueryNowPay();
+        },2000);
+    })
+</script>
+  <!-- 签到浮层 -->
+  <div class="backdrop" id="bh_sendcoins_box" style="display: block;">
+   <div class="item2p recharge" style="display: block; top: 30%;">
+    <div class="inner" style="padding-bottom: 0;">
+     <div class="title">
+       签到成功 
+     </div>
+     <div class="close">
+      <a href="javascript:;" onclick="$('#bh_sendcoins_box').hide();"></a>
+     </div>
+     <div class="entry" style="font-size: 16px; color: #b1b1b1; padding: 15px 0; line-height: 30px;  ">
+      <p>每日首次阅读，赠送<span style="color: #f00; font-size: 18px;padding:0 3px;">3</span>书币</p>
+      <p>请明日继续签到哦</p>
+     </div>
+     <div class="btn" style="margin-top: 0;">
+      <a href="javascript:;" onclick="$('#bh_sendcoins_box').hide();" style="background: none; color: #3cc485; font-size: 18px; height: 50px;
+    line-height: 50px; display: block;">我知道啦</a>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- 签到浮层 end -->
+  <script>    bid = "3735";
+    cid = "208421";
+    var readbid = "3735";
+    var read_url =  "/book_info/get_recommend_list.html";
+    var read_data = {bid:readbid};
+    var readseturl = "/book_info/ajax_book_read_set.html";
+    var wap_auto_buy = 1;
+    var old_wap_auto_buy = "0";
+    var re_book_url =  "/BookInfo/unlock_chapter";
+    var label =  "都市,特工,女人";
+    var couponsecond =  "";
+    $(function() {
+        set_loca_font_back();
+        read_book_list(read_url, read_data); //  特别推荐
+    });
+</script>
+  <script>        (function(){
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+  <script>    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?fcd37298453821c3bc8b266221db88ac";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+  <script>    /*防止iframe劫持*/
+    if (self.frameElement && self.frameElement.tagName == "IFRAME") {
+        top.location.href=self.location.href;
+    }
+    if (window.frames.length != parent.frames.length) {
+        top.location.href=self.location.href;
+    }
+    if (self != top) {
+        top.location.href=self.location.href;
+    }
+    var cookie_channel = "";
+    var cookie_user= "1509431471732";
+    var pv_uid= "15030022";
+    var noadduv = "0";
+    if(parseInt(noadduv) > 0){
+        cookie_user = 0;
+    }
+
+    if(parseInt(cookie_channel)*1 > 0){
+        tj_pv_uvhost(pv_uid,cookie_channel,cookie_user);
+            }
+
+    // 记录pv 和uv
+    function tj_pv_uvhost(uid,channel,user){
+        var tj_pv_uv_url = "//uv.qirexiaoshuo.com/Index/record_pvuv";
+        var tj_pv_uv_data = {uid:uid,channel:channel,user:user};
+        AjaxJsonP(tj_pv_uv_url,tj_pv_uv_data)
+    }
+</script>
+  <style>    #EG0phD8f,#ads44970830_wrap,#ads80245060_wrap { display:none !important; }
+</style>
+ </body>
 </html>
-<script src="/page/js/jquery.min.js"></script>
-<script src="/page/js/swiper.min.js"></script>
-<script src="/page/layer/a.js"></script>
-<!--<script src="/page/layer/layer.js"></script>-->
-<script src="/page/js/angular.min.js"></script>
