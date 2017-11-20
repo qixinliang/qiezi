@@ -154,4 +154,12 @@ class Novel{
 		]);
 		return json($row);
 	}
+
+	//目录
+	public function cata(){
+		$r = Request::instance();
+		$p = $r->param();
+		$cata = NULL;
+		return view('cata',['cata' => $cata]);
+	}
 }
