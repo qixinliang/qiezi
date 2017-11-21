@@ -155,6 +155,67 @@ class Novel{
 		return json($row);
 	}
 
+	//异步获取目录
+	public function ajaxGetCatalog(){
+		if(!Request::instance()->isAjax()){
+			return json([
+				'status' => -1,	
+				'info'   => 'Request method error'
+			]);
+		}
+		$p = Request::instance()->param();
+		/*
+		 * 1. bid 
+		 * 2. sort 1升序排列 0 降序
+		 * 3. p 分页页码
+		 * 4. cid当前正在阅读的章节id
+		 */
+		 $bid  = $p['bid'];
+		 $sort = $p['sort'];
+		 $page = $p['p'];
+		 $cid  = $p['cid'];
+
+		 $pageSize = 30;
+		 $offset = ($page - 1) * $pageSize;
+		 if($offset < 0){
+			$offset = 0;
+		 }
+
+		 $chapterObj = new ChapterModel();
+		 if($sort == 1){
+			 $rows = $chapterObj->where('novel_id',$bid)
+				->limit($offset,$pageSize)
+				->order('chapter_id','asc')
+				->select();
+		}else{
+			 $rows = $chapterObj->where('novel_id',$bid)
+				->limit($offset,$pageSize)
+				->order('chapter_id','desc')
+				->select();
+		}
+		$result = [];
+		$result['status'] = 1;
+		$result['info'] = '获取成功';
+
+		$html = '';
+		foreach($rows as $r){
+			$tempBid = $r->novel_id;
+			$tempCid = $r->chapter_id;
+			$href    = "/home/Novel/novelinfo/novel_id/$tempBid/id/$tempCid/";
+			$title   = $r->chapter_no . ":" . $r->chapter_name;
+			$free    = ($r->is_free == 1)? "免费" : "收费";
+			$tHtml = "<li><a href=\"$href\" >$title<span class=\"pull-right\" style=\"color: #fdb977; font-size: 12px;\">$free<!--<i class=\"icon-down\"></i>--></span></a></li>";	
+			$html .= $tHtml;
+		}
+		$result['data'] = [
+			'html' => $html,
+			'count' => count($rows),
+			'to_page' => 2, //FIXME
+		];
+
+		return $result;
+	}
+
 	//目录
 	public function cata(){
 		$r = Request::instance();
