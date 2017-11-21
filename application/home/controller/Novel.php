@@ -93,6 +93,9 @@ class Novel{
 		}
 		$chapter = $this->_getChapter($novelId,$id);
 
+
+		//FIXME 收费章节的处理
+
 		//获取最近一次阅读,并更新缓存
 		//此处可以参考sql目录中的bookrack，也就是阅读记录表。
 
@@ -227,5 +230,17 @@ class Novel{
 			$cata = (new ChapterModel())->getCatalog($nid);
 		}
 		return view('cata',['cata' => $cata]);
+	}
+
+	//书架
+	public function shelf(){
+		$shelf = NULL;
+		return view('shelf',['shelf' => $shelf]);
+	}
+
+	//最近阅读
+	public function recent(){
+		$recent = NULL;	
+		return view('recent',['recent' => $recent]);
 	}
 }
