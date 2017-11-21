@@ -232,12 +232,6 @@ class Novel{
 		return view('cata',['cata' => $cata]);
 	}
 
-	//书架
-	public function shelf(){
-		$shelf = NULL;
-		return view('shelf',['shelf' => $shelf]);
-	}
-
 	//最近阅读
 	public function recent(){
 		$recent = NULL;	
