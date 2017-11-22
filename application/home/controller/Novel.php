@@ -73,54 +73,92 @@ class Novel{
 		$ret = Db::query($sql);
 		return $ret;
 	}
+
+
 	public function show(){
-		$request = Request::instance();
-		$p = $request->param();
-		if(!isset($p['novel_id']) || !isset($p['id'])){
+		$r = Request::instance();
+		$p = $r->param();
+		if(!isset($p['novel_id']) || empty($p['novel_id'])){
 			return json([
 				'error_code' => -1,	
 				'error_msg'  => '请求参数错误'
 			]);
 		}
-		$novelId = (int)$p['novel_id'];
-		$id		 = (int)$p['id'];
-		$row     = $this->_getNovel($novelId);
+		$rid = 1;
+		$nid = (int)$p['novel_id'];
+		$cid = (int)$p['id'];
+
+		$row = $this->_getNovel($nid);
 		if(!isset($row) || empty($row)){
 			return json([
 				'error_code' => -1,	
 				'error_msg'  => '书籍信息获取失败'
 			]);
 		}
-		$chapter = $this->_getChapter($novelId,$id);
+		$novel = $row[0];
 
+		//从小说简介页进去的cid为0
+		if($cid == 0){
+			$record = BookrackModel::getRecord($rid,$nid);
+			if(!isset($record) || empty($record)){
+				//获取第一章数据开始阅读并记录
+				$cObj = new ChapterModel();
+				$chapter = $cObj->getFirstChapter($nid);
+				if(!isset($chapter) || empty($chapter)){
+					return json([
+						'error_code' => -1,	
+						'error_msg'  => '本章节数据为空'
+					]);
+				}
+				$chapter = $chapter[0];
 
-		//FIXME 收费章节的处理
+				$bcObj = new BookrackModel();
+				$bcObj->rid = $rid;
+				$bcObj->bid = $nid;
+				$bcObj->cid = $chapter->chapter_id;
+				$bcObj->create_time = time();
+				$bcObj->update_time = time();
+				$bcObj->save();
 
-		//获取最近一次阅读,并更新缓存
-		//此处可以参考sql目录中的bookrack，也就是阅读记录表。
+			}else{ //如果有说明已经阅读过,则获取最近一次的阅读记录并展示
+				$latestCid = $record->cid;
+				$chapter = $this->_getChapter($nid,$latestCid);
+				if(!isset($chapter) || empty($chapter)){
+					return json([
+						'error_code' => -1,	
+						'error_msg'  => '本章节数据为空'
+					]);
+				}
+				$chapter = $chapter[0];
+			}
+		}else{ //上下翻页（章节），此时的章节id为外部传入的$p['id']
+			$chapter = $this->_getChapter($nid,$cid);
+			if(!isset($chapter) || empty($chapter)){
+				return json([
+					'error_code' => -1,	
+					'error_msg'  => '章节数据为空'
+				]);
+			}
 
-		//更新最近阅读记录
-		//目前暂时还没有登录功能，所以读者id为1
-		$rid = 1;
-		//根据读者id，书籍id去查找表bookrack表的记录,如果没有则新建
-		//如果有，则更新章节id
-		$record = BookrackModel::getRecord($rid,$novelId); 
-		if(!isset($record) || empty($record)){
-			$bcObj = new BookrackModel();
-			$bcObj->rid = $rid;
-			$bcObj->bid = $novelId;
-			$bcObj->cid = $id;
-			$bcObj->create_time = time();
-			$bcObj->update_time = time();
-			$bcObj->save();
-		}else{
-			$record->cid = $id;
-			$record->update_time = time();
-			$record->save();
+			$record = BookrackModel::getRecord($rid,$nid); 
+			if(!isset($record) || empty($record)){
+				$bcObj = new BookrackModel();
+				$bcObj->rid = $rid;
+				$bcObj->bid = $nid;
+				$bcObj->cid = $cid;
+				$bcObj->create_time = time();
+				$bcObj->update_time = time();
+				$bcObj->save();
+			}else{
+				$record->cid = $cid;
+				$record->update_time = time();
+				$record->save();
+			}
+		
 		}
-
+		//FIXME 收费章节的处理
 		return view('show',[
-			'novel' => $row,
+			'novel' => $novel,
 			'chapter' => $chapter,
 		]);
 	}

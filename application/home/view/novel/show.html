@@ -37,26 +37,26 @@
  <body class="gray-mode">
   <article class="article-box clearfix">
    <header class="header clearfix">
-    <h1 class="title"><?=$chapter[0]['chapter_no']?>：<?=$chapter[0]['chapter_name']?>！</h1>
+    <h1 class="title"><?=$chapter['chapter_no']?>：<?=$chapter['chapter_name']?>！</h1>
     <div class="book-info">
-     <a href="/home/Novel/novelinfo/id/<?=$novel[0]['id']?>"><img src="<?=$novel[0]['surface']?>" alt="<?=$novel[0]['name']?>" />
+     <a href="/home/Novel/novelinfo/id/<?=$novel['id']?>"><img src="<?=$novel['surface']?>" alt="<?=$novel['name']?>" />
       <div class="text">
-	  <?=$novel[0]['name']?>
+	  <?=$novel['name']?>
       </div></a>
     </div>
    </header>
    <div class="entry" id="read_conent_box">
-	<?php echo $chapter[0]['content']; ?>
+	<?php echo $chapter['content']; ?>
    </div>
    <aside class="row feif_unlock">
     <div class="col">
-     <a href="/home/Novel/show/novel_id/<?=$chapter[0]['novel_id']?>/id/<?=$chapter[0]['pre_chapter_id']?>" class="btn">上一章</a>
+     <a href="/home/Novel/show/novel_id/<?=$chapter['novel_id']?>/id/<?=$chapter['pre_chapter_id']?>" class="btn">上一章</a>
     </div>
     <div class="col">
      <a href="javascript:;" onclick="show_seting()" class="dir"><i class="icon-dir"></i></a>
     </div>
     <div class="col">
-     <a href="/home/Novel/show/novel_id/<?=$chapter[0]['novel_id']?>/id/<?=$chapter[0]['next_chapter_id']?>/" class="btn">下一章</a>
+     <a href="/home/Novel/show/novel_id/<?=$chapter['novel_id']?>/id/<?=$chapter['next_chapter_id']?>/" class="btn">下一章</a>
     </div>
    </aside>
    <aside class="bar feif_unlock">

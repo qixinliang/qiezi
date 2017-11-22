@@ -12,4 +12,12 @@ class Chapter extends Model{
 			->select();
 		return $ret;
 	}
+
+	public function getFirstChapter($nid){
+		$ret = $this->where('novel_id',$nid)
+			->limit(1)
+			->order('chapter_id','asc')
+			->select();
+		return $ret;
+	}
 }
