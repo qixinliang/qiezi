@@ -132,29 +132,52 @@ class Novel{
 				$chapter = $chapter[0];
 			}
 		}else{ //上下翻页（章节），此时的章节id为外部传入的$p['id']
-			$chapter = $this->_getChapter($nid,$cid);
-			if(!isset($chapter) || empty($chapter)){
-				return json([
-					'error_code' => -1,	
-					'error_msg'  => '章节数据为空'
-				]);
-			}
-
-			$record = BookrackModel::getRecord($rid,$nid); 
-			if(!isset($record) || empty($record)){
-				$bcObj = new BookrackModel();
-				$bcObj->rid = $rid;
-				$bcObj->bid = $nid;
-				$bcObj->cid = $cid;
-				$bcObj->create_time = time();
-				$bcObj->update_time = time();
-				$bcObj->save();
+			//第一章上翻
+			if($cid == -1){
+				$cObj = new ChapterModel();
+				$chapter = $cObj->getFirstChapter($nid);
+				if(!isset($chapter) || empty($chapter)){
+					return json([
+						'error_code' => -1,	
+						'error_msg'  => '本章节数据为空'
+					]);
+				}
+				$chapter = $chapter[0];
+			}elseif($cid == -99){
+				$cObj = new ChapterModel();
+				$chapter = $cObj->getLastChapter($nid);
+				if(!isset($chapter) || empty($chapter)){
+					return json([
+						'error_code' => -1,	
+						'error_msg'  => '章节数据为空'
+					]);
+				}
+				$chapter = $chapter[0];
 			}else{
-				$record->cid = $cid;
-				$record->update_time = time();
-				$record->save();
+				$chapter = $this->_getChapter($nid,$cid);
+				if(!isset($chapter) || empty($chapter)){
+					return json([
+						'error_code' => -1,	
+						'error_msg'  => '章节数据为空'
+					]);
+				}
+				$chapter = $chapter[0];
+
+				$record = BookrackModel::getRecord($rid,$nid); 
+				if(!isset($record) || empty($record)){
+					$bcObj = new BookrackModel();
+					$bcObj->rid = $rid;
+					$bcObj->bid = $nid;
+					$bcObj->cid = $cid;
+					$bcObj->create_time = time();
+					$bcObj->update_time = time();
+					$bcObj->save();
+				}else{
+					$record->cid = $cid;
+					$record->update_time = time();
+					$record->save();
+				}
 			}
-		
 		}
 		//FIXME 收费章节的处理
 		return view('show',[

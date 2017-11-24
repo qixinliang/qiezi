@@ -20,4 +20,12 @@ class Chapter extends Model{
 			->select();
 		return $ret;
 	}
+
+	public function getLastChapter($nid){
+		$ret = $this->where('novel_id',$nid)
+			->limit(1)
+			->order('chapter_id','desc')
+			->select();
+		return $ret;
+	}
 }
