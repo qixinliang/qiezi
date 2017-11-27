@@ -10,6 +10,8 @@ use app\home\model\Kind     as KindModel;
 use app\home\model\Author   as AuthorModel;
 use app\home\model\Chapter  as ChapterModel;
 use app\home\model\Bookrack as BookrackModel;
+use app\home\model\Ticket   as TicketModel;
+use app\home\model\PurchaseLog as PurchaseLogModel;
 
 class Novel{
 	public function novelinfo(){
@@ -179,11 +181,63 @@ class Novel{
 				}
 			}
 		}
-		//FIXME 收费章节的处理
+		
+		//...收费章节...
+		if($chapter['is_free'] == 0){
+			$this->_handleCharge($rid,$chapter['novel_id'],$chapter['chapter_id'],$chapter['cost']);
+		}
 		return view('show',[
 			'novel' => $novel,
 			'chapter' => $chapter,
 		]);
+	}
+
+	protected function _handleCharge($rid,$nid,$cid,$cost){
+		$row = TicketModel::get($rid);
+		if(!isset($row) || empty($row)){
+			return json([
+				'error_code' => -1,	
+				'error_msg'  => '您还未充过值，请先充值'
+			]);	
+		}
+		if($row->book_ticket < $cost){
+			return json([
+				'error_code' => -1,	
+				'error_msg'  => '余额不足，请及时充值'
+			]);
+		}
+
+		//操作用户书币表
+		Db::startTrans();
+		try{
+			$sql = "UPDATE `ticket` SET book_ticket = book_ticket - {$cost} WHERE id = {$rid} AND book_ticket = {$row->book_ticket}";
+			$ret = Db::execute($sql);
+			if(!$ret){
+				Db::rollback();	
+			}
+			//生成扣费记录
+			$pLog = PurchaseLogModel::get([
+				'rid' => $rid,
+				'nid' => $nid,
+				'cid' => $cid
+			]);
+			if(!isset($pLog) || empty($pLog)){
+				$purchaseLog = new PurchaseLogModel();
+				$purchaseLog->rid = $rid;
+				$purchaseLog->nid = $nid;
+				$purchaseLog->cid = $cid;
+				$purchaseLog->cost = $cost;
+				$purchaseLog->ticket_before = $row->book_ticket;
+				$purchaseLog->ticket_after = $row->book_ticket - $cost;
+				$purchaseLog->create_time = time();
+				if($purchaseLog->save() == false){
+					Db::rollback();	
+				}
+			}
+			Db::commit();	
+		}catch(\Exception $e){
+			Db::rollback();	
+		}
 	}
 
 	//根据小说id获取它所有的章节列表
