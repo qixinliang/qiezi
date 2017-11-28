@@ -79,10 +79,11 @@
 			<div class="uf-header mt-44 clearfix"><img src="/home/images/uf-bg.jpg" class="bg">
 				<div class="center">
 					<div class="user">
-						<div class="avatar" href="javascript:;"><img src="http://wx.qlogo.cn/mmopen/IJdPq631CVGeYWKp6jzCfJViabuYiaAKFITwDcL2icHum3l8HhJofYdeCOEnYgibWdWglfxpzibzom8XFxmoPMpsP70ZXrnu8qSeH/0"></div>
-                        <div style="line-height: 20px;font-size: 15px;margin-top: 13px;">亮®</div>
-						
-                        <div style="line-height: 30px;font-size: 15px;">ID: &nbsp; 216711</div>
+						<div class="avatar" href="javascript:;"><img src="<?=$user->avatar?>"></div>
+                        <div style="line-height: 20px;font-size: 15px;margin-top: 13px;">
+							<?=$user->nickname?>
+						</div>
+                        <div style="line-height: 30px;font-size: 15px;">ID: &nbsp; <?=$user->uid?></div>
 
 					</div>
 				</div>
@@ -92,7 +93,7 @@
 			<div class="uf-box mb-156 clearfix">
 				<div class="item">
 					<a href="javascript:;" class="has-arrow"><i class="icon-money"></i>我的余额
-						<div class="pull-right"><span class="typo-orange">21书币</span></div>
+						<div class="pull-right"><span class="typo-orange"><?=$book_ticket?>书币</span></div>
 					</a>
 				</div>
 				<div class="item  mb-10">
