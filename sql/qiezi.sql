@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 27/11/2017 18:50:42
+ Date: 28/11/2017 17:40:08
 */
 
 SET NAMES utf8mb4;
@@ -272,7 +272,26 @@ CREATE TABLE `ticket` (
 -- Records of ticket
 -- ----------------------------
 BEGIN;
-INSERT INTO `ticket` VALUES (1, 40);
+INSERT INTO `ticket` VALUES (1, 200);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `uid` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `openid` varchar(32) NOT NULL DEFAULT '' COMMENT 'openid',
+  `nickname` varchar(50) DEFAULT NULL COMMENT '昵称',
+  `avatar` varchar(255) DEFAULT '' COMMENT '头像',
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+BEGIN;
+INSERT INTO `user` VALUES (1, '1', '亮', 'http://wx.qlogo.cn/mmopen/IJdPq631CVGeYWKp6jzCfJViabuYiaAKFITwDcL2icHum3l8HhJofYdeCOEnYgibWdWglfxpzibzom8XFxmoPMpsP70ZXrnu8qSeH/0');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
