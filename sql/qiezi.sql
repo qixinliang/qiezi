@@ -11,7 +11,7 @@
  Target Server Version : 50719
  File Encoding         : 65001
 
- Date: 28/11/2017 17:40:08
+ Date: 30/11/2017 17:58:57
 */
 
 SET NAMES utf8mb4;
@@ -257,6 +257,17 @@ CREATE TABLE `purchase_log` (
 BEGIN;
 INSERT INTO `purchase_log` VALUES (3, 1, 8, 113, 10, 60, 50, 1511779493);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for sign_in
+-- ----------------------------
+DROP TABLE IF EXISTS `sign_in`;
+CREATE TABLE `sign_in` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(11) unsigned NOT NULL COMMENT '读者id',
+  `sign_date` varchar(50) DEFAULT NULL COMMENT '签到日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for ticket
