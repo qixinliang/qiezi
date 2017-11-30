@@ -12,6 +12,7 @@ use app\home\model\Chapter  as ChapterModel;
 use app\home\model\Bookrack as BookrackModel;
 use app\home\model\Ticket   as TicketModel;
 use app\home\model\PurchaseLog as PurchaseLogModel;
+use app\home\model\SignIn      as SignInModel;
 
 class Novel{
 	public function novelinfo(){
@@ -181,6 +182,26 @@ class Novel{
 				}
 			}
 		}
+
+		//每日签到逻辑
+		$row = SignInModel::get([
+			'uid' => $rid,
+			'sign_date' => date("Y-m-d"),
+		]);
+		if(!isset($row) || empty($row)){
+			$firstSignin = 1;
+
+			//签到
+			$signinObj				= new SignInModel();
+			$signinObj->uid			= $rid;
+			$signinObj->sign_date	= date("Y-m-d");
+			$signinObj->save();
+
+			//每日增加3书币
+			$this->_handleFirstRead($rid,3);
+		}else{
+			$firstSignin = 0;
+		}
 		
 		//...收费章节...
 		if($chapter['is_free'] == 0){
@@ -189,7 +210,36 @@ class Novel{
 		return view('show',[
 			'novel' => $novel,
 			'chapter' => $chapter,
+			'first_signin' => $firstSignin
 		]);
+	}
+
+	protected function _handleFirstRead($rid,$ticket){
+		$row = TicketModel::get($rid);
+		if(!isset($row) || empty($row)){
+			//还未阅读过
+			$tObj = new TicketModel();
+			$tObj->id = $rid;
+			$tObj->book_ticket = $ticket;
+			if(!$tObj->save()){
+				return false;
+			}
+			return true;
+		}
+		Db::startTrans();
+		try{
+			$sql = "UPDATE `ticket` SET book_ticket = book_ticket + {$ticket} WHERE id = {$rid} AND book_ticket = {$row->book_ticket}";
+			$ret = Db::execute($sql);
+			if(!$ret){
+				Db::rollback();
+				return false;
+			}
+			Db::commit();
+		}catch(\Exception $e){
+			Db::rollback();
+			return false;
+		}
+		return true;
 	}
 
 	protected function _handleCharge($rid,$nid,$cid,$cost){
