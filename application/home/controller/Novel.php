@@ -243,6 +243,21 @@ class Novel{
 	}
 
 	protected function _handleCharge($rid,$nid,$cid,$cost){
+		//针对此用户，本小说的本章节已经扣费过，不再重复扣费.
+		$pLog = PurchaseLogModel::get([
+			'rid'  => $rid,
+			'nid'  => $nid,
+			'cid'  => $cid,
+			'cost' => $cost
+		]);
+		if(isset($pLog) && !empty($pLog)){
+			return json([
+				'error_code' => -1,
+				'error_msg'  => '已购买此章节'
+			]);
+		}
+
+		//未扣费的流程处理。。。
 		$row = TicketModel::get($rid);
 		if(!isset($row) || empty($row)){
 			return json([
@@ -263,30 +278,23 @@ class Novel{
 			$sql = "UPDATE `ticket` SET book_ticket = book_ticket - {$cost} WHERE id = {$rid} AND book_ticket = {$row->book_ticket}";
 			$ret = Db::execute($sql);
 			if(!$ret){
-				Db::rollback();	
+				Db::rollback();
 			}
 			//生成扣费记录
-			$pLog = PurchaseLogModel::get([
-				'rid' => $rid,
-				'nid' => $nid,
-				'cid' => $cid
-			]);
-			if(!isset($pLog) || empty($pLog)){
-				$purchaseLog = new PurchaseLogModel();
-				$purchaseLog->rid = $rid;
-				$purchaseLog->nid = $nid;
-				$purchaseLog->cid = $cid;
-				$purchaseLog->cost = $cost;
-				$purchaseLog->ticket_before = $row->book_ticket;
-				$purchaseLog->ticket_after = $row->book_ticket - $cost;
-				$purchaseLog->create_time = time();
-				if($purchaseLog->save() == false){
-					Db::rollback();	
-				}
+			$purchaseLog = new PurchaseLogModel();
+			$purchaseLog->rid = $rid;
+			$purchaseLog->nid = $nid;
+			$purchaseLog->cid = $cid;
+			$purchaseLog->cost = $cost;
+			$purchaseLog->ticket_before = $row->book_ticket;
+			$purchaseLog->ticket_after = $row->book_ticket - $cost;
+			$purchaseLog->create_time = time();
+			if($purchaseLog->save() == false){
+				Db::rollback();
 			}
 			Db::commit();	
 		}catch(\Exception $e){
-			Db::rollback();	
+			Db::rollback();
 		}
 	}
 
