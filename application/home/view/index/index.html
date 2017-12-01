@@ -10,13 +10,13 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="applicable-device" content="mobile" />
-    <title>首页</title>
+    <title>茄子小说</title>
     <meta name="Keywords" content="小说，免费小说，好看的小说，小说下载，言情小说，免费小说下载" />
-    <meta name="Description" content="最全小说提供最新免费言情小说在线阅读及下载。最全小说包括言情小说，玄幻小说，穿越小说，都市小说，言情小说书库等，小说在线阅读就选最全小说。" />
+    <meta name="Description" content="茄子小说提供最新免费言情小说在线阅读及下载。茄子小说包括言情小说，玄幻小说，穿越小说，都市小说，言情小说书库等，小说在线阅读就选茄子小说。" />
     <link rel="stylesheet" type="text/css" href="/home/css/base.css" />
     <link rel="stylesheet" type="text/css" href="/home/css/recharge.css" />
     <script>
-        var t_text = "小说_小说排行榜_免费小说下载_好看的小说网-最全小说";
+        var t_text = "小说_小说排行榜_免费小说下载_好看的小说网-茄子小说";
         var url_channel = "";
         if(url_channel != '') {
             try {
@@ -203,7 +203,7 @@
 <!--header begin-->
 <div class="header">
     <div class="inner">
-        <!--<div class="logo"><h2 style="font-weight: bold;font-size: 1.8rem;line-height: 1.8rem;">最齐小说</h2></div>-->
+        <!--<div class="logo"><h2 style="font-weight: bold;font-size: 1.8rem;line-height: 1.8rem;">茄子小说</h2></div>-->
         <!-- <div class="entry"> -->
         <!-- <ul> -->
         <!-- <li> -->
@@ -236,28 +236,24 @@
     </div>
 </div>
 <!--header end-->
-<div class="search-result" id="page_html" style="position: fixed; top: 0; left: 0; z-index: 50; width: 100%; padding-bottom: 0;"></div>
+<div class="search-result" id="page_html" style="position: fixed; top: 0; left: 0; z-index: 50; width: 100%; padding-bottom: 0;">
+</div>
 
 <!--single-media begin  首页轮播图-->
 <div class="media" id="single-media">
 	<?php foreach($carousels as $k => $v): ?>
 		<?php
 			$href = "/home/Novel/novelinfo/id/".$v->id;
-			$surface = $v->surface;
+			$surface = isset($v->surface)? $v->surface: '';
 		?>
 
 		<?php if($k == 0) : ?>
 			<div>
-				<a href="<?=$href?>">
-					<img width="100%" height="162px" src="<?=$surface ?>" />
-                <!--<div style="background-image: url(http://becold.cn);background-position: center center;height: 162px;background-size: 80% 100%;background-repeat: no-repeat;"></div>-->
-				</a>
+				<a href="<?=$href?>"><img src="<?=$surface ?>" /></a>
 			</div>
 		<?php else : ?>
-			<div style='display:none;'>
-				<a href="<?=$href?>">
-					<img width="100%" height="162px" src="<?=$surface ?>" />
-				</a>
+				<div style='display:none;'>
+				<a href="<?=$href?>"><img src="<?=$surface ?>" /></a>
 			</div>
 		<?php endif;?>
 	<?php endforeach; ?>
@@ -267,21 +263,14 @@
 <!--classify begin-->
 <div class="classify">
     <ul>
-        <li>
-            <a href="/Home/Category/index"><i class="icon-fl"></i>分类</a>
-        </li>
-        <li>
-            <a href="/Home/Rank/index"><i class="icon-ranking"></i>排行</a>
-        </li>
-        <li>
-            <a href="/Home/User/recharge"><i class="icon-vip"></i>充值</a>
-        </li>
-        <li>
-            <a href="/Home/Free/index"><i class="icon-free"></i>免费</a>
-        </li>
+        <li><a href="/Home/Category/index"><i class="icon-fl"></i>分类</a></li>
+        <li><a href="/Home/Rank/index"><i class="icon-ranking"></i>排行</a></li>
+        <li><a href="/Home/User/recharge"><i class="icon-vip"></i>充值</a></li>
+        <li><a href="/Home/Free/index"><i class="icon-free"></i>免费</a></li>
     </ul>
 </div>
 <!--classify end-->
+
 <!--主编推荐 begin-->
 <div class="recommend bor-top">
     <div class="title">
@@ -467,7 +456,7 @@
 <!--限时免费 begin-->
 <div class="recommend free bor-top">
     <div class="title">
-        <h3>限时免费</h3><span class="time" id="downdate_box" startdate="<?=$f_e_time?>"><!--倒计时: 3天--><!--<i class="num">08</i>--><!--<small>:</small>--><!--<i class="num">40</i>--><!--<small>:</small>--><!--<i class="num">03</i>--></span></div>
+        <h3>限时免费</h3><span class="time" id="downdate_box" startdate="<?=$f_e_time?>"></span></div>
     <div class="entry">
         <ul>
 					<?php foreach($free as $f): ?>
@@ -528,8 +517,8 @@
     <!-- <small></small> -->
     <!-- <a href="https://itunes.apple.com/cn/app/id1224888764?mt=8">活动</a> -->
 		<small></small><a href="/Home/Free/index">限时免费</a></span>
-    <p>@2017 最齐小说</p>
-    <p>免责声明：小说均源于互联网-所有版权股属于原作者</p>
+    <p>@2017 茄子小说</p>
+    <p>免责声明：小说均源于互联网-所有版权均属于原作者</p>
     <div><img style="margin: auto;" src="/attached/other/zuiqi_novel.jpg" width="48%"/></div>
     <p>本公众号仅提供页面服务，如有侵权请与我们联系</p>
 </div>
@@ -1226,4 +1215,3 @@
 </body>
 
 </html>
-

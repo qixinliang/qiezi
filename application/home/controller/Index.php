@@ -15,7 +15,7 @@ use app\home\model\Free    as FreeModel;
 class Index{
 
 	//获取轮播数据
-	protected function getCarousel(){
+	protected function _getCarousel(){
 		$nObj = new NovelModel();
 		$rows = $nObj->where('is_carousel',1)->limit(6)->order('id','desc')->select();
 		return $rows;
@@ -87,7 +87,7 @@ class Index{
 
 	public function index(){
 		//-轮播数据
-		$carousels = $this->getCarousel();
+		$carousels = $this->_getCarousel();
 
 		//-主编推荐数据
 		$rows = $this->getRecommend();
