@@ -22,35 +22,35 @@ class Index{
 	}
 
 	//获取主编推荐数据-9条
-	protected function getRecommend(){
+	protected function _getRecommend(){
 		$nObj	= new NovelModel();
 		$rows	= $nObj->where('is_recommend',1)->limit(9)->order('id','desc')->select();
 		return $rows;
 	}
 
 	//获取热门小说，首页显示三部
-	protected function getHot(){
+	protected function _getHot(){
 		$nObj = new NovelModel();	
 		$rows = $nObj->where('is_hot',1)->limit(3)->order('id','desc')->select();
 		return $rows;
 	}
 
 	//新书,5条数据，3个横排，2个竖排
-	protected function getNew(){
+	protected function _getNew(){
 		$nObj = new NovelModel();
 		$rows = $nObj->where('is_new',1)->limit(5)->order('id','desc')->select();
 		return $rows;
 	}
 
 	//畅销书籍
-	protected function getPopular(){
+	protected function _getPopular(){
 		$nObj = new NovelModel();
 		$rows = $nObj->where('is_popular',1)->limit(6)->order('id','desc')->select();
 		return $rows;
 	}
 	
 	//限免书籍
-	protected function getFree(){
+	protected function _getFree(){
 		$sql = "
 			SELECT  n.id,n.name title,n.kid,n.aid,n.surface,n.intro,a.name author FROM novel n
 			JOIN free  f ON n.id = f.novel_id
@@ -90,7 +90,7 @@ class Index{
 		$carousels = $this->_getCarousel();
 
 		//-主编推荐数据
-		$rows = $this->getRecommend();
+		$rows = $this->_getRecommend();
 		$first	= [];
 		$second = [];
 		$third	= [];
@@ -105,20 +105,20 @@ class Index{
 		}
 
 		//热门小说
-		$rows = $this->getHot();
+		$rows = $this->_getHot();
 		$hot  = $this->_assemble($rows);
 
 		//新书推荐
-		$rows = $this->getNew();
+		$rows = $this->_getNew();
 		$new  = $this->_assemble($rows);
 
 		//畅销书单
-		$rows	 = $this->getPopular();
+		$rows	 = $this->_getPopular();
 		$popular = $this->_assemble($rows);
 
 		//限时免费
 		$freeEndTime = Config::get('free.end_time');
-		$free = $this->getFree();
+		$free = $this->_getFree();
 
 		return view('index',[
 			'carousels' => $carousels,
