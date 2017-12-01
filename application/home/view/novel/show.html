@@ -454,6 +454,7 @@
         },2000);
     })
 </script>
+	<?php if($first_signin == 1) : ?>
   <!-- 签到浮层 -->
   <div class="backdrop" id="bh_sendcoins_box" style="display: block;">
    <div class="item2p recharge" style="display: block; top: 30%;">
@@ -476,6 +477,7 @@
    </div>
   </div>
   <!-- 签到浮层 end -->
+  <?php endif; ?>
   <script>    bid = "3735";
     cid = "208421";
     var readbid = "3735";
