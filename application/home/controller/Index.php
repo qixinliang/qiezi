@@ -85,7 +85,20 @@ class Index{
 		return $output;
 	}
 
+	//判断是否微信端打开
+	public static function is_weixin(){
+		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+			return true;
+		}
+		return false;
+	}
+
 	public function index(){
+		$isWx = static::is_weixin();
+		if(!$isWx){
+			return view('tip');
+		}
+
 		//-轮播数据
 		$carousels = $this->_getCarousel();
 
