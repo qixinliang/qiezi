@@ -11,6 +11,7 @@ use app\home\model\Kind    as KindModel;
 use app\home\model\Author  as AuthorModel;
 use app\home\model\Chapter as ChapterModel;
 use app\home\model\Free    as FreeModel;
+use Oauth\Wechat;
 
 class Index{
 
@@ -98,6 +99,22 @@ class Index{
 		if(!$isWx){
 			return view('tip');
 		}
+
+		//微信登陆逻辑
+		$wechat = new Wechat();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		//-轮播数据
 		$carousels = $this->_getCarousel();
