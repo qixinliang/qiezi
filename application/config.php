@@ -243,4 +243,8 @@ return [
 	'free' => [
 		'end_time' => "2017/12/17 07:00:00",
 	],
+	'wechat' => [
+		'app_id' => '',
+		'app_secret' => '',
+	],
 ];

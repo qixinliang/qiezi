@@ -1,5 +1,5 @@
 <?php
-namespace Oauth;
+namespace app\library\Oauth;
 
 class Wechat{
 	protected $_appId		= '';

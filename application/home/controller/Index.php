@@ -11,7 +11,7 @@ use app\home\model\Kind    as KindModel;
 use app\home\model\Author  as AuthorModel;
 use app\home\model\Chapter as ChapterModel;
 use app\home\model\Free    as FreeModel;
-use Oauth\Wechat;
+use app\library\Oauth\Wechat           as Wechat;
 
 class Index{
 
@@ -95,15 +95,21 @@ class Index{
 	}
 
 	public function index(){
+		/*
 		$isWx = static::is_weixin();
 		if(!$isWx){
 			return view('tip');
-		}
+		}*/
 
-		//微信登陆逻辑
-		$wechat = new Wechat();
-
-
+		$appId = Config::get('wechat.app_id');
+		$appSecret = Config::get('wechat.app_secret');
+		$wechat = new Wechat($appId,$appSecret);
+		$redirectUrl = 'http://w.jxyx.net/home/index/index';
+		$scope = 'snsapi_userinfo';
+		$state = 1;
+		$result = $wechat->getAuthorizationUrl($redirectUrl,$scope,$state);
+		var_dump($result);
+		exit;
 
 
 
