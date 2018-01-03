@@ -3,6 +3,7 @@
  * 前台首页控制器
  */
 namespace app\home\controller;
+use think\Controller;
 use \think\Request;
 use \think\Config;
 use \think\Db;
@@ -13,7 +14,7 @@ use app\home\model\Chapter as ChapterModel;
 use app\home\model\Free    as FreeModel;
 use app\library\Oauth\Wechat           as Wechat;
 
-class Index{
+class Index extends Controller{
 
 	//获取轮播数据
 	protected function _getCarousel(){
@@ -108,6 +109,8 @@ class Index{
 		$scope = 'snsapi_userinfo';
 		$state = 1;
 		$result = $wechat->getAuthorizationUrl($redirectUrl,$scope,$state);
+		$this->success('新增成功', $result);
+		$this->redirect($result);
 		var_dump($result);
 		exit;
 
