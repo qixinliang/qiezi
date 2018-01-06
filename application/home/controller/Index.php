@@ -87,44 +87,8 @@ class Index extends Controller{
 		return $output;
 	}
 
-	//判断是否微信端打开
-	public static function is_weixin(){
-		if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
-			return true;
-		}
-		return false;
-	}
 
 	public function index(){
-		/*
-		$isWx = static::is_weixin();
-		if(!$isWx){
-			return view('tip');
-		}*/
-
-		$appId = Config::get('wechat.app_id');
-		$appSecret = Config::get('wechat.app_secret');
-		$wechat = new Wechat($appId,$appSecret);
-		$redirectUrl = 'http://w.jxyx.net/home/index/index';
-		$scope = 'snsapi_userinfo';
-		$state = 1;
-		$result = $wechat->getAuthorizationUrl($redirectUrl,$scope,$state);
-		$this->success('新增成功', $result);
-		$this->redirect($result);
-		var_dump($result);
-		exit;
-
-
-
-
-
-
-
-
-
-
-
-
 		//-轮播数据
 		$carousels = $this->_getCarousel();
 
