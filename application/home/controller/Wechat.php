@@ -23,10 +23,14 @@ public function oauth(){
 	$appId = Config::get('wechat.app_id');
 	$appSecret = Config::get('wechat.app_secret');
 	$wechat = new Wechat($appId,$appSecret);
-	$redirectUrl = urlencode('http://w.jxyx.net/home/index/index');
+	$redirectUrl = urlencode('http://w.jxyx.net/home/Wechat/callback');
 	$scope = 'snsapi_userinfo';
 	$state = 1;
 	$ret = $wechat->getAuthorizationUrl($redirectUrl,$scope,$state);
 	$this->success('授权成功', $ret);
 	//$this->redirect($ret);
+}
+
+public function callback(){
+
 }
