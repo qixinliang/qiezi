@@ -29,10 +29,13 @@ class Wechat extends Controller{
 		$scope = 'snsapi_userinfo';
 		$state = 1;
 		$ret = $wechat->getAuthorizationUrl($redirectUrl,$scope,$state);
-		$this->success('授权成功', $ret);
-		//$this->redirect($ret);
+		$this->redirect($ret);
+		//$this->success('授权成功', $ret);
 	}
 
 	public function callback(){
+		$r = Request::instance();
+		$p = $r->param();
+		var_dump($p);
 	}
 }
