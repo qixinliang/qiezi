@@ -244,7 +244,7 @@ return [
 		'end_time' => "2017/12/17 07:00:00",
 	],
 	'wechat' => [
-		'app_id' => '',
-		'app_secret' => '',
+		'app_id' => 'wx26b3ad540b5cd608',
+		'app_secret' => 'b8338a5e1391fdf1a29e9d3b33b06eb8',
 	],
 ];
