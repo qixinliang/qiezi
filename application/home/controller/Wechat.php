@@ -56,7 +56,7 @@ class Wechat extends Controller{
 
 		$unionid = '';
 	    $userInfo = $this->wechatLib->getUserInfo($token['openid'], $token['access_token']);
-		if(!isset($userInfo) || empty($userinfo)){
+		if(!isset($userInfo) || empty($userInfo)){
 			return json([
 				'error_code' => -1,
 				'error_msg'  => 'get user information error'
