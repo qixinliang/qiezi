@@ -40,10 +40,29 @@ class Wechat extends Controller{
 		$r = Request::instance();
 		$p = $r->param();
 		if(!isset($p['code']) || empty($p['code'])){
-			throw new \Exception("authentication error");
+			return json([
+				'error_code' => -1,
+				'error_msg'  => 'authentication error'
+			]);
 		}
 		$code = $p['code'];
 		$token = $this->wechatLib->getAccessToken($code);
-		var_dump($token);
+		if(!isset($token) || empty($token)){
+			return json([
+				'error_code' => -1,
+				'error_msg'  => 'get access token error'
+			]);
+		}
+
+		$unionid = '';
+	    $userInfo = $this->wechatLib->getUserInfo($token['openid'], $token['access_token']);
+		if(!isset($userInfo) || empty($userinfo)){
+			return json([
+				'error_code' => -1,
+				'error_msg'  => 'get user information error'
+			]);
+	    }
+		var_dump($userInfo);
+		var_dump(get_class($this));
 	}
 }
