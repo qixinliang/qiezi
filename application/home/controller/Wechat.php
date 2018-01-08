@@ -5,7 +5,8 @@ use think\Controller;
 use \think\Request;
 use \think\Config;
 use \think\Db;
-use app\library\Oauth\WechatLib           as WechatLib;
+use app\library\Oauth\WechatLib	as WechatLib;
+use app\home\model\User			as UserModel;
 
 
 class Wechat extends Controller{
@@ -54,7 +55,6 @@ class Wechat extends Controller{
 			]);
 		}
 
-		$unionid = '';
 	    $userInfo = $this->wechatLib->getUserInfo($token['openid'], $token['access_token']);
 		if(!isset($userInfo) || empty($userInfo)){
 			return json([
@@ -62,7 +62,13 @@ class Wechat extends Controller{
 				'error_msg'  => 'get user information error'
 			]);
 	    }
-		var_dump($userInfo);
-		var_dump(get_class($this));
+
+		//add user info
+		$user = UserModel::create([
+			'openid'	=> isset($userInfo['openid'])?	$userInfo['openid'] : '',
+			'nickname'	=> isset($userInfo['nickname'])? $userInfo['nickname'] : '',
+			'avatar'	=> isset($userInfo['headimgurl'])? $userInfo['headimgurl'] : ''
+		]);
+		return $this->redirect('/home/Index/index');
 	}
 }
