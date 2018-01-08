@@ -1,7 +1,7 @@
 <?php
 namespace app\library\Oauth;
 
-class Wechat{
+class WechatLib{
 	protected $_appId		= '';
 	protected $_appSecret	= '';
 

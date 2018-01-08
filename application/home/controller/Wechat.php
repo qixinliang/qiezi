@@ -5,7 +5,7 @@ use think\Controller;
 use \think\Request;
 use \think\Config;
 use \think\Db;
-use app\library\Oauth\Wechat           as WWechat;
+use app\library\Oauth\WechatLib           as WechatLib;
 
 
 class Wechat extends Controller{
@@ -24,7 +24,7 @@ class Wechat extends Controller{
 		}
 		$appId = Config::get('wechat.app_id');
 		$appSecret = Config::get('wechat.app_secret');
-		$wechat = new WWechat($appId,$appSecret);
+		$wechat = new WechatLib($appId,$appSecret);
 		$redirectUrl = urlencode('http://w.jxyx.net/home/Wechat/callback');
 		$scope = 'snsapi_userinfo';
 		$state = 1;
