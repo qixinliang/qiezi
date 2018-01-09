@@ -3,16 +3,17 @@
  * 用户控制器
  */
 namespace app\home\controller;
+use \think\Session;
 use app\home\model\User   as UserModel;
 use app\home\model\Ticket as TicketModel;
+
 class User{
 	public function recharge(){
 		return view('recharge');	
 	}
 
-	//我的个人信息
 	public function userinfo(){
-		//用户登陆后，能知道他的openid
+		$session = Session::get('user_info');
 		$row = UserModel::get([
 			'openid' => 1,
 		]);

@@ -5,6 +5,7 @@ use think\Controller;
 use \think\Request;
 use \think\Config;
 use \think\Db;
+use \think\Session;
 use app\library\Oauth\WechatLib	as WechatLib;
 use app\home\model\User			as UserModel;
 
@@ -69,6 +70,9 @@ class Wechat extends Controller{
 			'nickname'	=> isset($userInfo['nickname'])? $userInfo['nickname'] : '',
 			'avatar'	=> isset($userInfo['headimgurl'])? $userInfo['headimgurl'] : ''
 		]);
+
+		Session::set('user_info',json_encode($userInfo));
+
 		return $this->redirect('/home/Index/index');
 	}
 }
