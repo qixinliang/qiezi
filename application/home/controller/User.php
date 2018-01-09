@@ -14,9 +14,12 @@ class User{
 
 	public function userinfo(){
 		$session = Session::get('user_info');
-		$row = UserModel::get([
-			'openid' => 1,
-		]);
+	    $session = json_decode($session,true);
+	    $openid  = $session['openid'];
+	    $row = UserModel::get([
+			'openid' => $openid,
+	    ]);
+
 		if(!isset($row) || empty($row)){
 			return json([
 				'error_code' => -1,
