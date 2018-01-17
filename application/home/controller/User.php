@@ -15,9 +15,9 @@ class User{
 	public function userinfo(){
 		$session = Session::get('user_info');
 	    $session = json_decode($session,true);
-	    $openid  = $session['openid'];
+	    $uid  = $session['uid'];
 	    $row = UserModel::get([
-			'openid' => $openid,
+			'uid' => $uid,
 	    ]);
 
 		if(!isset($row) || empty($row)){
@@ -28,7 +28,7 @@ class User{
 		}
 
 		$ticket = TicketModel::get([
-			'id' => $row->uid
+			'id' => $uid
 		]);
 
 		$bookTicket = 0;
