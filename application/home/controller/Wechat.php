@@ -6,6 +6,7 @@ use \think\Request;
 use \think\Config;
 use \think\Db;
 use \think\Session;
+use \think\Cookie;
 use app\library\Oauth\WechatLib	as WechatLib;
 use app\home\model\User			as UserModel;
 
@@ -65,20 +66,35 @@ class Wechat extends Controller{
 	    }
 
 		$user = UserModel::get(['openid' => $userInfo['openid']]);
-		var_dump($user);
-		//非首次登陆
-		if(!empty($user)){
-		
+		if(!isset($user) || empty($user)){
+			$user = new UserModel();
 		}
-		exit;
-		//add user info
-		$user = UserModel::create([
+		/*
+		$row = UserModel::create([
 			'openid'	=> isset($userInfo['openid'])?	$userInfo['openid'] : '',
 			'nickname'	=> isset($userInfo['nickname'])? $userInfo['nickname'] : '',
 			'avatar'	=> isset($userInfo['headimgurl'])? $userInfo['headimgurl'] : ''
-		]);
+		]);*/
+		$user->openid = $userInfo['openid'];
+		$user->nickname = $userInfo['nickname'];
+		$user->avatar = $userInfo['headimgurl'];
+		$user->save();
 
-		Session::set('user_info',json_encode($userInfo));
+		$sessionData = [
+			'uid' => $user->uid,
+			'nickname' => $user->nickname,
+			'avatar' => $user->avatar
+		];
+
+		Session::set('user_info',json_encode($sessionData));
+		//Session::set('user_info',json_encode($userInfo));
+
+		//加入cookie
+		$uid = $user->uid;
+		$time = time() + 60 * 60 * 24 * 7 * 30;//记录一个月
+		$cookieName = 'user_remember';
+		$cookieValue = base64_encode($uid .'#'. $time);
+		Cookie::set($cookieName,$cookieValue,60*60*24*7*30);
 
 		return $this->redirect('/home/Index/index');
 	}
