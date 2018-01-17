@@ -64,6 +64,13 @@ class Wechat extends Controller{
 			]);
 	    }
 
+		$user = UserModel::get(['openid' => $userInfo['openid']]);
+		var_dump($user);
+		//非首次登陆
+		if(!empty($user)){
+		
+		}
+		exit;
 		//add user info
 		$user = UserModel::create([
 			'openid'	=> isset($userInfo['openid'])?	$userInfo['openid'] : '',
