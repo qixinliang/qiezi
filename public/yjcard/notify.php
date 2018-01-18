@@ -1,7 +1,7 @@
 
 <?php 
 	error_log("notify+++\n");
-	error_log(var_export($_GET));
+	error_log(var_export($_GET,true));
 
 //商户在网关上的订单状态，0为失败，1为成功
 //http://localhost:8080/receive.php?state=1211&customerid=221sss&sd51no=2132&sdcustomno=sdfe122113&ordermoney=10&mark=1fe3f&sign=f3e1f651wef13sf1
@@ -29,7 +29,7 @@ $resign=trim($_GET['resign']);
 $des=trim($_GET['des']);
 
 //商户在网关上的交易密钥，登录商户后台可自行查询修改
-$key="******************************";
+$key="e6b85fe4574bebbace4ba3eccd4744b9";
 
 $signstr='customerid='.$customerid.'&sd51no='.$sd51no.'&sdcustomno='.$sdcustomno.'&mark='.$mark.'&key='.$key.'';
 //验证MD5签名
@@ -48,6 +48,7 @@ if ($sign==$signtmp && $resign==$signtmp)
   {
 
 //商户业务数据成功处理
+	echo  "pay sucess+++\n";
   }
     else
   {
