@@ -8,7 +8,7 @@ $ordermoney = $settings['amount'];		//订单金额 单位分
 $cardno		= "32";						//支付方式
 $noticeurl	= $settings['notice_url'];  //后台通知地址
 $backurl	= $settings['back_url'];    //跳转地址
-$key		= $settings['key'];			//密钥
+$key		= $settings['secret'];		//密钥
 
 $signstr	= "customerid=".$customerid.
 			"&sdcustomno=".$sdcustomno.
@@ -67,12 +67,14 @@ $sign = strtoupper(md5($signstr,false));
 		</td>
 	</tr>
 
+<!--
 	<tr>
 		<td align="right">商户自定义：</td>
 		<td>
 			<input name="mark" type="text" value="<?php echo $mark; ?>" style="display:none">
 		</td>
 	</tr>
+-->
 
 	<tr>
 		<td align="right">MD5签名：</td>
