@@ -40,7 +40,7 @@ $sign=strtoupper(md5($signstr,false));
 <title>支付测试</title>
 </head>
 <body>
-<form name="form1" id="form1" action="http://api.yjcard.com/intf/wpay.html" method="post">
+<form name="form1" id="form1" action="http://api.yjcard.com/intf/wapwpay.html" method="post">
 
 
 <table border="1">

@@ -1,6 +1,8 @@
 
 <?php 
-	echo "notify............\n";
+	error_log("notify+++\n");
+	error_log(var_export($_GET));
+
 //商户在网关上的订单状态，0为失败，1为成功
 //http://localhost:8080/receive.php?state=1211&customerid=221sss&sd51no=2132&sdcustomno=sdfe122113&ordermoney=10&mark=1fe3f&sign=f3e1f651wef13sf1
 $state=trim($_GET['state']);
