@@ -26,9 +26,9 @@ $sign = strtoupper(md5($signstr,false));
 
 	<table border="1">
 	<tr>
-		<td align="right">商户号：</td>
-		<td>
-			<input name="customerid" type="text" value="<?php echo $customerid;?>" style="display:none">
+		<td align="right" style="display:none">商户号：</td>
+		<td style="display:none">
+			<input name="customerid" type="text" value="<?php echo $customerid;?>">
 		</td>
 	</tr>
 
@@ -47,23 +47,23 @@ $sign = strtoupper(md5($signstr,false));
 	</tr>
 
 	<tr>
-		<td align="right">支付方式：</td>
-		<td>
-			<input name="cardno" type="text" value="<?php echo $cardno; ?>" style="display:none">
+		<td align="right" style="display:none">支付方式：</td>
+		<td style="display:none">
+			<input name="cardno" type="text" value="<?php echo $cardno; ?>">
 		</td>
 	</tr>
 
 	<tr>
-		<td align="right">异步通知地址：</td>
-		<td>
-			<input name="noticeurl" type="text" value="<?php echo $noticeurl; ?>" style="display:none">
+		<td align="right" style="display:none">异步通知地址：</td>
+		<td style="display:none">
+			<input name="noticeurl" type="text" value="<?php echo $noticeurl; ?>">
 		</td>
 	</tr>
 
 	<tr>
-		<td align="right">同步通知地址：</td>
-		<td>
-			<input name="backurl" type="text" value="<?php echo $backurl; ?>" style="display:none">
+		<td align="right" style="display:none">同步通知地址：</td>
+		<td style="display:none">
+			<input name="backurl" type="text" value="<?php echo $backurl; ?>">
 		</td>
 	</tr>
 
@@ -71,15 +71,15 @@ $sign = strtoupper(md5($signstr,false));
 	<tr>
 		<td align="right">商户自定义：</td>
 		<td>
-			<input name="mark" type="text" value="<?php echo $mark; ?>" style="display:none">
+			<input name="mark" type="text" value="<?php echo $mark; ?>">
 		</td>
 	</tr>
 -->
 
 	<tr>
-		<td align="right">MD5签名：</td>
-		<td>
-			<input name="sign" type="text" value="<?php echo $sign; ?>" style="display:none">
+		<td align="right" style="display:none">MD5签名：</td>
+		<td style="display:none">
+			<input name="sign" type="text" value="<?php echo $sign; ?>">
 		</td>
 	</tr>
 
