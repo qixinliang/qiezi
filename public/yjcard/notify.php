@@ -48,7 +48,7 @@ if ($sign==$signtmp && $resign==$signtmp)
   {
 
 //商户业务数据成功处理
-	echo  "pay sucess+++\n";
+	error_log("pay sucess+++");
   }
     else
   {
