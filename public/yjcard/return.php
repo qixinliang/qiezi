@@ -1,2 +1,2 @@
 <?php 
-	echo "return\n";
+	echo "支付成功\n";

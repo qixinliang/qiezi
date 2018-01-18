@@ -40,7 +40,7 @@ $signstr2='sign='.$signtmp.'&customerid='.$customerid.'&ordermoney='.$ordermoney
 $signtmp2=strtoupper(md5($signstr2,false));
 
 //MD5签名正确
-if ($sign==$signtmp && $resign==$signtmp)
+if ($sign==$signtmp && $resign==$signtmp2)
 {
 
 //检测到状态为成功
