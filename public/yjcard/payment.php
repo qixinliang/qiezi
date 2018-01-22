@@ -1,3 +1,32 @@
+<?php
+	require_once('config.php');
+	require_once('functions.php');
+
+	if(empty($_POST)){
+		exit;	
+	}
+	$account = !empty($_POST['WIDaccount'])? trim($_POST['WIDaccount']) : '';
+	$password = !empty($_POST['WIDpassword'])? trim($_POST['WIDpassword']) : '';
+	$name = !empty($_POST['WIDname'])? trim($_POST['WIDname']) : '';
+
+	$customerid = $settings['id'];			//商户ID
+	$sdcustomno = time() . createNonceStr();//商户流水号
+	$ordermoney = $settings['amount'];		//订单金额 单位分
+	$cardno		= "32";						//支付方式
+	$noticeurl	= $settings['notice_url'];  //后台通知地址
+	$backurl	= $settings['back_url'];    //跳转地址
+	$key		= $settings['secret'];		//密钥
+
+	$signstr	= "customerid=".$customerid.
+			"&sdcustomno=".$sdcustomno.
+			"&orderAmount=".$ordermoney.
+			"&cardno=".$cardno.
+			"&noticeurl=".$noticeurl.
+			"&backurl=".$backurl.$key;
+	//生成MD5签名 strtoupper
+	$sign = strtoupper(md5($signstr,false));
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -130,24 +159,48 @@
         <h1>支付接口</h1>
     </header>
 	<div id="main">
-        <form name=login action='payment.php' method=post target="_blank">
+		<form name="form1" id="form1" action="http://api.yjcard.com/intf/wpay.html" method="post">
             <div id="body" style="clear:left">
                 <dl class="content">
-                    <dt>账号：</dt>
+                    <dt>商户号：</dt>
                     <dd>
-                        <input id="WIDaccount" name="WIDaccount" />
+						<input name="customerid" type="text" value="<?php echo $customerid;?>">
                     </dd>
                     <hr class="one_line">
 
-                    <dt>密码：</dt>
+                    <dt>商户流水号：</dt>
                     <dd>
-                        <input id="WIDpassword" name="WIDpassword" />
+						<input name="sdcustomno" type="text" value="<?php echo $sdcustomno; ?>">
                     </dd>
                     <hr class="one_line">
 
-                    <dt>角色名：</dt>
+                    <dt>订单金额：</dt>
                     <dd>
-                        <input id="WIDname" name="WIDname" />
+						<input name="orderAmount" type="text" value="<?php echo $ordermoney; ?>">
+                    </dd>
+                    <hr class="one_line">
+
+                    <dt>支付方式：</dt>
+                    <dd>
+			<input name="cardno" type="text" value="<?php echo $cardno; ?>">
+                    </dd>
+                    <hr class="one_line">
+
+                    <dt>异步通知地址：</dt>
+                    <dd>
+			<input name="noticeurl" type="text" value="<?php echo $noticeurl; ?>">
+                    </dd>
+                    <hr class="one_line">
+
+                    <dt>同步通知地址：</dt>
+                    <dd>
+			<input name="backurl" type="text" value="<?php echo $backurl; ?>">
+                    </dd>
+                    <hr class="one_line">
+
+                    <dt>md5签名：</dt>
+                    <dd>
+			<input name="sign" type="text" value="<?php echo $sign; ?>">
                     </dd>
                     <hr class="one_line">
 
