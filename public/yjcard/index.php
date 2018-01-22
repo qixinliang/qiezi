@@ -154,7 +154,7 @@
                     <dt></dt>
                     <dd id="btn-dd">
                         <span class="new-btn-login-sp">
-                            <button class="new-btn-login" type="submit" style="text-align:center;">确 认</button>
+                            <button class="new-btn-login" type="submit" style="text-align:center;">充 值</button>
                         </span>
                     </dd>
                 </dl>
