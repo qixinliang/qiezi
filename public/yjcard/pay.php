@@ -26,6 +26,27 @@ $sign = strtoupper(md5($signstr,false));
 
 	<table border="1">
 	<tr>
+		<td align="right">账号：</td>
+		<td>
+			<input name="account" type="text">
+		</td>
+	</tr>
+
+	<tr>
+		<td align="right">密码：</td>
+		<td>
+			<input name="password" type="text">
+		</td>
+	</tr>
+
+	<tr>
+		<td align="right">角色名：</td>
+		<td>
+			<input name="name" type="text">
+		</td>
+	</tr>
+
+	<tr>
 		<td align="right" style="display:none">商户号：</td>
 		<td style="display:none">
 			<input name="customerid" type="text" value="<?php echo $customerid;?>">

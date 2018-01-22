@@ -1,3 +1,56 @@
+<?php
+    header("Content-type: text/html; charset=utf-8");
+
+    require_once('config.php');
+    require_once('functions.php');
+
+    if (!empty($_POST['WIDout_trade_no'])&& trim($_POST['WIDout_trade_no'])!=""){
+
+        $customerid = $settings['id'];           //商户ID
+        $sdcustomno = $_POST['WIDout_trade_no']; //商户流水号
+		$sdcustomno = time() . createNonceStr();//商户流水号
+        $ordermoney = $settings['amount'];       //订单金额 单位分
+        $cardno     = "32";                      //支付方式
+        $noticeurl  = $settings['notice_url'];   //后台通知地址
+        $backurl    = $settings['back_url'];     //跳转地址
+        $key        = $settings['secret'];       //密钥
+
+        $signstr    = "customerid=".$customerid.
+                    "&sdcustomno=".$sdcustomno.
+                    "&orderAmount=".$ordermoney.
+                    "&cardno=".$cardno.
+                    "&noticeurl=".$noticeurl.
+                    "&backurl=".$backurl.$key;
+        //生成MD5签名 strtoupper
+        $sign = strtoupper(md5($signstr,false));
+        var_dump($_POST);
+
+        $pData = array(
+            "customerid" => $customerid, 
+            "sdcustomno" => $sdcustomno,
+			"orderAmount"=> $ordermoney,
+			"cardno"	 => $cardno,
+			"noticeurl"  => $noticeurl,
+			"backurl"	 => $backurl,
+			"sign"       => $sign
+        );
+		$pData = http_build_query($pData);
+
+		$gateway = "http://api.yjcard.com/intf/wpay.html";
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $gateway);
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_POST, 1);
+
+
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $pData);
+		$data = curl_exec($curl);
+		curl_close($curl);
+		var_dump($data);
+    }
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -130,7 +183,7 @@
         <h1>支付接口</h1>
     </header>
 	<div id="main">
-        <form name=alipayment action='' method=post target="_blank">
+        <form name=payment action='' method=post target="_blank">
             <div id="body" style="clear:left">
                 <dl class="content">
                     <dt>商户订单号：</dt>
@@ -139,21 +192,21 @@
                     </dd>
                     <hr class="one_line">
 
-                    <dt>订单名称：</dt>
+                    <dt>账号：</dt>
                     <dd>
-                        <input id="WIDsubject" name="WIDsubject" />
+                        <input id="WIDaccount" name="WIDaccount" />
                     </dd>
                     <hr class="one_line">
 
-                    <dt>付款金额：</dt>
+                    <dt>密码：</dt>
                     <dd>
-                        <input id="WIDtotal_amount" name="WIDtotal_amount" />
+                        <input id="WIDpassword" name="WIDpassword" />
                     </dd>
                     <hr class="one_line">
 
-                    <dt>商品描述：</dt>
+                    <dt>角色名：</dt>
                     <dd>
-                        <input id="WIDbody" name="WIDbody" />
+                        <input id="WIDname" name="WIDname" />
                     </dd>
                     <hr class="one_line">
 
@@ -181,9 +234,9 @@
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());
 		document.getElementById("WIDout_trade_no").value =  sNow;
-		document.getElementById("WIDsubject").value = "测试";
-		document.getElementById("WIDtotal_amount").value = "0.01";
-        document.getElementById("WIDbody").value = "购买测试商品0.01元";
+		document.getElementById("WIDaccount").value = "测试账号111";
+		document.getElementById("WIDpassword").value = "123456";
+        document.getElementById("WIDname").value = "测试角色111";
 	}
 	GetDateNow();
 </script>
