@@ -6,9 +6,9 @@ $settings = [
 	'notice_url'	=> 'http://w.jxyx.net/yjcard/notify.php',
 	'back_url'		=> 'http://w.jxyx.net/yjcard/return.php',
 ];
-$dsn = [
+$database = [
 	'host'		=> '127.0.0.1',
-	'db'		=> 'qiezi',
+	'db'		=> 'game',
 	'username'	=> 'root',
 	'password'	=> '123456'
 ];

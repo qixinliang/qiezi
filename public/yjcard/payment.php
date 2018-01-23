@@ -1,13 +1,15 @@
 <?php
 	require_once('config.php');
 	require_once('functions.php');
+	require_once('db.php');
 
-	if(empty($_POST)){
-		exit;	
+	if(empty($_POST['WIDaccount']) || empty($_POST['WIDpassword']) || empty($_POST['WIDname'])){
+		exit(-1);
 	}
-	$account = !empty($_POST['WIDaccount'])? trim($_POST['WIDaccount']) : '';
-	$password = !empty($_POST['WIDpassword'])? trim($_POST['WIDpassword']) : '';
-	$name = !empty($_POST['WIDname'])? trim($_POST['WIDname']) : '';
+
+	$account	=  trim($_POST['WIDaccount']);
+	$password	= trim($_POST['WIDpassword']);
+	$name		= trim($_POST['WIDname']);
 
 	$customerid = $settings['id'];			//商户ID
 	$sdcustomno = time() . createNonceStr();//商户流水号
@@ -25,6 +27,33 @@
 			"&backurl=".$backurl.$key;
 	//生成MD5签名 strtoupper
 	$sign = strtoupper(md5($signstr,false));
+
+	//db...
+	$dbms	= 'mysql';
+	$host	= $database['host'];
+	$dbName = $database['db'];
+	$user	= $database['username'];
+	$pass	= $database['password'];
+	$dsn	= "$dbms:host=$host;dbname=$dbName";
+	$dbh = db_init($dsn,$user,$pass);
+	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
+	$dbh->exec('set names utf8');
+	
+	
+	$sql = "INSERT INTO `order` (`order_no` ,`account`, `password`, `name`, `status`, `create_time`, `update_time`)VALUES (:order_no, :account, :password, :name, :status, :create_time, :update_time)"; 
+	$stmt = $dbh->prepare($sql);
+	$stmt->execute(
+		array(
+			':order_no'		=> $sdcustomno,
+			':account'		=> $account,
+			':password'		=> $password,
+			':name'			=> $name,
+			':status'		=> 1, //未付款
+			':create_time'	=> time(),
+			':update_time'	=> time(),
+		)
+	);  
+	//echo $dbh->lastinsertid();
 ?>
 
 <!DOCTYPE html>
