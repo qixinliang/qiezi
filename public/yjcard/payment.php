@@ -193,50 +193,50 @@
                 <dl class="content">
                     <dt>商户号：</dt>
                     <dd>
-						<input name="customerid" type="text" value="<?php echo $customerid;?>">
+						<input name="customerid" type="text" readonly="readonly" value="<?php echo $customerid;?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>商户流水号：</dt>
                     <dd>
-						<input name="sdcustomno" type="text" value="<?php echo $sdcustomno; ?>">
+						<input name="sdcustomno" type="text" readonly="readonly" value="<?php echo $sdcustomno; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>订单金额：</dt>
                     <dd>
-						<input name="orderAmount" type="text" value="<?php echo $ordermoney; ?>">
+						<input name="orderAmount" type="text" readonly="readonly" value="<?php echo $ordermoney; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>支付方式：</dt>
                     <dd>
-			<input name="cardno" type="text" value="<?php echo $cardno; ?>">
+						<input name="cardno" type="text" readonly="readonly" value="<?php echo $cardno; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>异步通知地址：</dt>
                     <dd>
-			<input name="noticeurl" type="text" value="<?php echo $noticeurl; ?>">
+						<input name="noticeurl" type="text" readonly="readonly" value="<?php echo $noticeurl; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>同步通知地址：</dt>
                     <dd>
-			<input name="backurl" type="text" value="<?php echo $backurl; ?>">
+						<input name="backurl" type="text" readonly="readonly" value="<?php echo $backurl; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt>md5签名：</dt>
                     <dd>
-			<input name="sign" type="text" value="<?php echo $sign; ?>">
+						<input name="sign" type="text" readonly="readonly" value="<?php echo $sign; ?>">
                     </dd>
                     <hr class="one_line">
 
                     <dt></dt>
                     <dd id="btn-dd">
                         <span class="new-btn-login-sp">
-                            <button class="new-btn-login" type="submit" style="text-align:center;">确 认</button>
+                            <button class="new-btn-login" type="submit" style="text-align:center;">订单确认</button>
                         </span>
                     </dd>
                 </dl>
