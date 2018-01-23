@@ -33,20 +33,27 @@
 	//MD5签名正确
 	if ($sign==$signtmp && $resign==$signtmp2){
 		//检测到状态为成功
+
+		//db...
+		$dbms	= 'mysql';
+		$host	= $database['host'];
+		$dbName = $database['db'];
+		$user	= $database['username'];
+		$pass	= $database['password'];
+		$dsn	= "$dbms:host=$host;dbname=$dbName";
+		$dbh = db_init($dsn,$user,$pass);
+		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
+		$dbh->exec('set names utf8');
+
 		if ($state==1){
 			//商户业务数据成功处理
 			error_log("pay success+++");
 
-			//db...
-			$dbms	= 'mysql';
-			$host	= $database['host'];
-			$dbName = $database['db'];
-			$user	= $database['username'];
-			$pass	= $database['password'];
-			$dsn	= "$dbms:host=$host;dbname=$dbName";
-			$dbh = db_init($dsn,$user,$pass);
-			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
-			$dbh->exec('set names utf8');
+			//修改订单状态为支付成功
+			$sql = "UPDATE `order` SET `status`=:status,`update_time`=:update_time WHERE `order_no`=:order_no";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute(array(':order_no'=>$sdcustomno, ':status'=>2,':update_time'=>time()));    
+			error_log($stmt->rowCount());
 
 			$sql = "SELECT * FROM `order` WHERE `order_no` = :order_no";    
 			$stmt = $dbh->prepare($sql);    
@@ -54,8 +61,30 @@
 			$row = $stmt->fetch(PDO::FETCH_ASSOC);
 			error_log("row = ".var_export($row,true));
 
+
+			//写入授权
+			$account = isset($row['account'])? $row['account'] : '';
+			$password = isset($row['password'])? $row['password'] : '';
+			$name = isset($row['name'])? $row['name'] : '';
+
+			$sql = "INSERT INTO `auth` (`account`, `password`, `name`, `create_time`)VALUES (:account, :password, :name, :create_time)"; 
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute(
+				array(
+					':account'		=> $account,
+					':password'		=> $password,
+					':name'			=> $name,
+					':create_time'	=> time(),
+				)
+			);
+			error_log("auth table last insert id = ".$dbh->lastinsertid());
 		}else{
 			//商户业务数据失败处理
+			//修改订单状态为支付失败
+			$sql = "UPDATE `order` SET `status`=:status WHERE `order_no`=:order_no";    
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute(array(':order_no'=>$sdcustomno, ':status'=>3));    
+			error_log($stmt->rowCount());
 		}
 
 		//处理完后返回接收到标识为1
